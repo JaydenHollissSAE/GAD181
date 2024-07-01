@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1236190672543689185, guid: c6e3a66b1245225489374ee22e9b5c33, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1862258136553779240, guid: c6e3a66b1245225489374ee22e9b5c33, type: 3}
       propertyPath: m_Name
       value: BalloonHolder
