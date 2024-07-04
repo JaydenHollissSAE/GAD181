@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,4 +10,14 @@ public class BalloonDartsManager : MonoBehaviour
     public List<GameObject> balloons = new List<GameObject>();
     public GameObject balloonHolder;
     public List<float> balloonSpeed = new List<float>();
+    public event Action onBalloonPop;
+    public static BalloonDartsManager current;
+
+    public void balloonPop()
+    {
+        if (onBalloonPop != null)
+        {
+            onBalloonPop();
+        }
+    }
 }

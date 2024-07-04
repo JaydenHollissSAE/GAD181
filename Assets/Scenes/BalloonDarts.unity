@@ -347,7 +347,7 @@ MonoBehaviour:
   - {fileID: 2446937132082494053, guid: 19074d82fa19bad4bbbf6b08a4fd1789, type: 3}
   - {fileID: 2583585848036280681, guid: c3ac1bc6aadca3d4980b9153f393b8dc, type: 3}
   - {fileID: 6794228549445852202, guid: 5291c3214862e2c449bf5fb9b287e9e0, type: 3}
-  balloonHolder: {fileID: 0}
+  balloonHolder: {fileID: 6178792535377944315, guid: c6e3a66b1245225489374ee22e9b5c33, type: 3}
   balloonSpeed:
   - 15
   - 20
