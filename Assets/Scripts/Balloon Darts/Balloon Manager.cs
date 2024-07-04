@@ -27,15 +27,15 @@ public class BalloonManager : MonoBehaviour
 
         startPoint = balloonDartsManagerScript.rowsStarting[row];
         endPoint = balloonDartsManagerScript.rowsEnding[row];
-        Debug.Log(row);
-        Debug.Log(endPoint);
-        Debug.Log(startPoint);
+        //Debug.Log(row);
+        //Debug.Log(endPoint);
+        //Debug.Log(startPoint);
 
         balloonId = Random.Range(0, balloonDartsManagerScript.balloons.Count);
 
         attachedBalloon = Instantiate(balloonDartsManagerScript.balloons[balloonId]);
         speed = balloonDartsManagerScript.balloonSpeed[balloonId];
-        Debug.Log(attachedBalloon);
+        //Debug.Log(attachedBalloon);
 
         attachedBalloon.transform.parent = transform;
         transform.position = startPoint;
@@ -48,8 +48,8 @@ public class BalloonManager : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, endPoint, Time.deltaTime * speed);
         currentPosition = Vector2.Distance(transform.position, endPoint);
-        Debug.Log(currentPosition);
-        Debug.Log(transform.position);
+        //Debug.Log(currentPosition);
+        //Debug.Log(transform.position);
         if (currentPosition <= 1.0f)
         {
             //BalloonSpawnerScript.SpawnBalloon();
