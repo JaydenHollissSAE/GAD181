@@ -6,10 +6,13 @@ public class BalloonHitManager : MonoBehaviour
 {
     private BalloonDartsManager balloonDartsManager;
     private BalloonPopManager balloonPopManager;
+    public int id;
     // Start is called before the first frame update
     void Start()
     {
-        
+        BalloonDartsManager.current.onBalloonPop += PopBalloon;
+        id = this.GetInstanceID();
+        //Debug.Log(this.id);
     }
 
     // Update is called once per frame
@@ -22,9 +25,11 @@ public class BalloonHitManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                BalloonDartsManager.current.onBalloonPop += PopBalloon;
+                Debug.Log(hit);
+                BalloonDartsManager.current.balloonPop(id);
                 //balloonPopManager.PopBalloon();
                 //Debug.Log("Hit Detected");
+                //Debug.Log(this.name);
                 //Destroy(hit.collider.gameObject);
                 //Debug.Log(hit.collider.gameObject);
             }
@@ -36,9 +41,18 @@ public class BalloonHitManager : MonoBehaviour
     }
 
 
-    private void PopBalloon()
+    private void PopBalloon(int id)
     {
-        Destroy(this.gameObject);
+        if (id == this.id)
+        {
+            //Debug.Log(id);
+            //Debug.Log(this.id);
+            //Debug.Log(BalloonDartsManager.current.balloonPop());
+            //BalloonDartsManager.current.onBalloonPop -= PopBalloon;
+            //Debug.Log("Hit Detected");
+            //Debug.Log(gameObject.name);
+            Destroy(this.gameObject);
+        }
     }
 
 }

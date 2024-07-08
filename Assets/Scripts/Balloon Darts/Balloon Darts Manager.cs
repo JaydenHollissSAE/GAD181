@@ -10,14 +10,19 @@ public class BalloonDartsManager : MonoBehaviour
     public List<GameObject> balloons = new List<GameObject>();
     public GameObject balloonHolder;
     public List<float> balloonSpeed = new List<float>();
-    public event Action onBalloonPop;
     public static BalloonDartsManager current;
 
-    public void balloonPop()
+    private void Awake()
+    {
+        current = this;
+    }
+
+    public event Action<int> onBalloonPop;
+    public void balloonPop(int id)
     {
         if (onBalloonPop != null)
         {
-            onBalloonPop();
+            onBalloonPop(id);
         }
     }
 }
