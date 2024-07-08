@@ -23,8 +23,8 @@ public class MineSetup : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            float xPos = Random.Range(-5f, 4f) + 0.5f;
-            float yPos = Random.Range(-5f, 4f) + 0.5f;
+            float xPos = Mathf.Round(Random.Range(-5f, 4f)) + 0.5f;
+            float yPos = Mathf.Round(Random.Range(-5f, 4f)) + 0.5f;
 
             GameObject newMine = Instantiate(minePrefab, minefieldParent.transform);
             newMine.transform.position = new Vector3(xPos, yPos, 0);
