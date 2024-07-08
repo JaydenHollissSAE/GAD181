@@ -11,6 +11,7 @@ public class BalloonDartsManager : MonoBehaviour
     public GameObject balloonHolder;
     public List<float> balloonSpeed = new List<float>();
     public static BalloonDartsManager current;
+    //public int id;
 
     private void Awake()
     {

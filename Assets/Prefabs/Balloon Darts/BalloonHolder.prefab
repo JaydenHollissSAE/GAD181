@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5068832996283494363}
   - component: {fileID: 3965463467392931423}
   - component: {fileID: 8756743141420000481}
-  - component: {fileID: -1677432279791660652}
   m_Layer: 0
   m_Name: BalloonHolder
   m_TagString: Untagged
@@ -96,17 +95,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61bdfbe469ff21d428e62576e25df4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1677432279791660652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6178792535377944315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f5e3643ab7f8344b456935a865a5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

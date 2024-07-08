@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1972683345484139445}
   - component: {fileID: 8910609421614117011}
   - component: {fileID: 3530972626363785116}
+  - component: {fileID: -2839717130560145283}
   m_Layer: 0
   m_Name: YellowBalloon
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6638628, y: 2.3439097, z: 0.93438697}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,3 +107,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1.5, z: 0.20000003}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2839717130560145283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583585848036280681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f5e3643ab7f8344b456935a865a5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
