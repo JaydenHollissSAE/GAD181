@@ -13,6 +13,11 @@ public class Rat : MonoBehaviour
 
     private bool hittable = true;
 
+    public enum RatType { Normal, RedEyes, Cactus};
+    private RatType ratType;
+    private float redEyeRate = 0.25f;
+    private int lives;
+
     //start and end location for rat popping up and down
     private Vector2 startPosition = new Vector2(0f, -8.4f);
     private Vector2 endPosition = new Vector2(0f, 0.55f);
@@ -23,9 +28,21 @@ public class Rat : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private void CreateNext()
+    {
+        float random = Random.Range(0f, 1f);
+        if (random < redEyeRate)
+        {
+            ratType = RatType.RedEyes;
+            spriteRenderer.sprite = ratRedEyes;
+            lives = 2;
+        }
+        hittable = true;
+    }
+
     private void Awake()
     {
-        spriteRenderer = GetComponent<spriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnMouseDown()
@@ -95,6 +112,7 @@ public class Rat : MonoBehaviour
     // Start is called before the first frame update
    private void Start()
     {
+        CreateNext();
         StartCoroutine(ShowHide(startPosition, endPosition));
     }
 
