@@ -12,19 +12,14 @@ public class Rat : MonoBehaviour
     [SerializeField] private Sprite ratRedCrossEyes;
     [SerializeField] private Sprite cactus;
 
-    private bool hittable = true;
-
-    public enum RatType { Normal, RedEyes, Cactus };
-    private RatType ratType;
-    private float redEyeRate = 0.25f;
-    private float cactusRate = 0f;
-    private int lives;
+    [Header("GameManager")]
+    [SerializeField] private GameManager gameManager;
 
     //start and end location for rat popping up and down
     private Vector2 startPosition = new Vector2(0f, -8.4f);
     private Vector2 endPosition = new Vector2(0f, 0.55f);
 
-    //how long the mole shows for
+    //how long it takes to show a rat
     private float showDuration = 0.5f;
     private float duration = 1f;
 
@@ -35,100 +30,14 @@ public class Rat : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    private void CreateNext()
-    {
-        //creates a cactus if random number is within set range
-        float random = Random.Range(0f, 1f);
-        if (random < cactusRate)
-        {
-            ratType = RatType.Cactus;
-        }
-        else
-        {
-            //creates a red eyes rat if random number is within set range
-            random = Random.Range(0f, 1f);
-            if (random < redEyeRate)
-            {
-                ratType = RatType.RedEyes;
-                spriteRenderer.sprite = ratRedEyes;
-                lives = 2;
-            }
-            else
-            {
-                //creates a red eyes rat if other options aren't selected
-                ratType = RatType.Normal;
-                spriteRenderer.sprite = rat;
-                lives = 1;
-            }
-        }
-        hittable = true;
-    }
-
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-
-        //work out rat box collider values
-        boxOffset = boxCollider2D.offset;
-        boxSize = boxCollider2D.size;
-        boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
-        boxSizeHidden = new Vector2(boxSize.x, 0f);
-    }
-
-    private void OnMouseDown()
-    {
-        if (hittable)
-        {
-            switch (ratType)
-            {
-                case RatType.Normal:
-                    spriteRenderer.sprite = ratCrossEyes;
-                    //stop the animation
-                    StopAllCoroutines();
-                    StartCoroutine(QuickHide());
-                    hittable = false;
-                    break;
-                case RatType.RedEyes:
-                    //if lives == 2 reduce, and change sprite
-                    if (lives == 2)
-                    {
-                        spriteRenderer.sprite = ratRedEyesHit;
-                        lives--;
-                    }
-                    else
-                    {
-                        spriteRenderer.sprite = ratRedCrossEyes;
-                        //stop the animation
-                        StopAllCoroutines();
-                        StartCoroutine(QuickHide());
-                        hittable = false;
-                    }
-                    break;
-                case RatType.Cactus:
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
-    private IEnumerator QuickHide()
-    {
-        yield return new WaitForSeconds(0.25f);
-        if (!hittable)
-        {
-            Hide();
-        }
-    }
-
-    public void Hide()
-    {
-        transform.localPosition = startPosition;
-        boxCollider2D.offset = boxOffsetHidden;
-        boxCollider2D.size = boxSizeHidden;
-    }
-
+    //rat parameters
+    private bool hittable = true;
+    public enum RatType { Normal, RedEyes, Cactus };
+    private RatType ratType;
+    private float redEyeRate = 0.25f;
+    private float cactusRate = 0f;
+    private int lives;
+    private int ratIndex = 0;
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
@@ -148,6 +57,8 @@ public class Rat : MonoBehaviour
         }
         //make sure rat is at end
         transform.localPosition = end;
+        boxCollider2D.offset = boxOffset;
+        boxCollider2D.size = boxSize;
 
         //wait for duration to pass
         yield return new WaitForSeconds(duration);
@@ -166,8 +77,100 @@ public class Rat : MonoBehaviour
         }
         //make sure rat is at start
         transform.localPosition = start;
-        boxCollider2D.offset = boxOffsetHidden; 
+        boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
+
+        if (hittable)
+        {
+            hittable = false;
+            gameManager.Missed(ratIndex, ratType != RatType.Cactus);
+        }
+    }
+
+    public void Hide()
+    {
+        transform.localPosition = startPosition;
+        boxCollider2D.offset = boxOffsetHidden;
+        boxCollider2D.size = boxSizeHidden;
+    }
+
+    private IEnumerator QuickHide()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (!hittable)
+        {
+            Hide();
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (hittable)
+        {
+            switch (ratType)
+            {
+                case RatType.Normal:
+                    spriteRenderer.sprite = ratCrossEyes;
+                    gameManager.AddScore(ratIndex);
+                    //stop the animation
+                    StopAllCoroutines();
+                    StartCoroutine(QuickHide());
+                    hittable = false;
+                    break;
+                case RatType.RedEyes:
+                    //if lives == 2 reduce, and change sprite
+                    if (lives == 2)
+                    {
+                        spriteRenderer.sprite = ratRedEyesHit;
+                        lives--;
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite = ratRedCrossEyes;
+                        gameManager.AddScore(ratIndex);
+                        //stop the animation
+                        StopAllCoroutines();
+                        StartCoroutine(QuickHide());
+                        hittable = false;
+                    }
+                    break;
+                case RatType.Cactus:
+                    gameManager.GameOver(1);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void CreateNext()
+    {
+        //creates a cactus if random number is within set range
+        float random = Random.Range(0f, 1f);
+        if (random < cactusRate)
+        {
+            ratType = RatType.Cactus;
+            spriteRenderer.sprite = cactus;
+        }
+        else
+        {
+            //creates a red eyes rat if random number is within set range
+            random = Random.Range(0f, 1f);
+            if (random < redEyeRate)
+            {
+                ratType = RatType.RedEyes;
+                spriteRenderer.sprite = ratRedEyes;
+                lives = 2;
+            }
+            else
+            {
+                //creates a normal rat if other options aren't selected
+                ratType = RatType.Normal;
+                spriteRenderer.sprite = rat;
+                lives = 1;
+            }
+        }
+        hittable = true;
     }
 
     private void SetLevel(int level)
@@ -184,13 +187,34 @@ public class Rat : MonoBehaviour
         duration = Random.Range(durationMin, durationMax);
     }
 
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
 
-    // Start is called before the first frame update
+        //work out rat box collider values
+        boxOffset = boxCollider2D.offset;
+        boxSize = boxCollider2D.size;
+        boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
+        boxSizeHidden = new Vector2(boxSize.x, 0f);
+    }
+
     public void Activate(int level)
     {
         SetLevel(level);
         CreateNext();
         StartCoroutine(ShowHide(startPosition, endPosition));
+    }
+
+    public void SetIndex(int index)
+    {
+        ratIndex = index;
+    }
+
+    public void StopGame()
+    {
+        hittable = false;
+        StopAllCoroutines();
     }
 }
   
