@@ -7,19 +7,19 @@ public class Rat : MonoBehaviour
     [Header("Graphics")]
     [SerializeField] private Sprite rat;
     [SerializeField] private Sprite ratCrossEyes;
-    [SerializeField] private Sprite ratRedEyes;
-    [SerializeField] private Sprite ratRedEyesHit;
-    [SerializeField] private Sprite ratRedCrossEyes;
-    [SerializeField] private Sprite cactus;
+    [SerializeField] private Sprite redEyesRat;
+    [SerializeField] private Sprite redEyesRatHit;
+    [SerializeField] private Sprite RedRatCrossEyes;
+    [SerializeField] private Sprite Cactus;
+
 
     [Header("GameManager")]
     [SerializeField] private GameManager gameManager;
 
-    //start and end location for rat popping up and down
+    // The offset of the sprite to hide it.
     private Vector2 startPosition = new Vector2(0f, -8.4f);
     private Vector2 endPosition = new Vector2(0f, 0.55f);
-
-    //how long it takes to show a rat
+    // How long it takes to show a mole.
     private float showDuration = 0.5f;
     private float duration = 1f;
 
@@ -30,65 +30,68 @@ public class Rat : MonoBehaviour
     private Vector2 boxOffsetHidden;
     private Vector2 boxSizeHidden;
 
-    //rat parameters
+    // Mole Parameters 
     private bool hittable = true;
     public enum RatType { Normal, RedEyes, Cactus };
     private RatType ratType;
-    private float redEyeRate = 0.25f;
+    private float redEyesRate = 0.25f;
     private float cactusRate = 0f;
     private int lives;
     private int ratIndex = 0;
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
-        //make sure rat is at start
+        // Make rat is at the start.
         transform.localPosition = start;
 
-        //showing the rat
+        // Show the rat.
         float elapsed = 0f;
         while (elapsed < showDuration)
         {
             transform.localPosition = Vector2.Lerp(start, end, elapsed / showDuration);
             boxCollider2D.offset = Vector2.Lerp(boxOffsetHidden, boxOffset, elapsed / showDuration);
             boxCollider2D.size = Vector2.Lerp(boxSizeHidden, boxSize, elapsed / showDuration);
-            //update at max framerate
+            // Update at max framerate.
             elapsed += Time.deltaTime;
             yield return null;
         }
-        //make sure rat is at end
+
+        // Make sure rat is at the end.
         transform.localPosition = end;
         boxCollider2D.offset = boxOffset;
         boxCollider2D.size = boxSize;
 
-        //wait for duration to pass
+        // Wait for duration to pass.
         yield return new WaitForSeconds(duration);
 
-        //hide the rat
+        // Hide the rat.
         elapsed = 0f;
         while (elapsed < showDuration)
         {
             transform.localPosition = Vector2.Lerp(end, start, elapsed / showDuration);
             boxCollider2D.offset = Vector2.Lerp(boxOffset, boxOffsetHidden, elapsed / showDuration);
             boxCollider2D.size = Vector2.Lerp(boxSize, boxSizeHidden, elapsed / showDuration);
-
-            //update at max framrate
+            // Update at max framerate.
             elapsed += Time.deltaTime;
             yield return null;
         }
-        //make sure rat is at start
+        // Make rat is at the start.
         transform.localPosition = start;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
 
+        // If we got to the end and it's still hittable then we missed it.
         if (hittable)
         {
             hittable = false;
+            // We only give time penalty if it isn't a cactus.
             gameManager.Missed(ratIndex, ratType != RatType.Cactus);
         }
     }
 
     public void Hide()
     {
+        // Set the appropriate rat parameters to hide it.
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
@@ -97,6 +100,9 @@ public class Rat : MonoBehaviour
     private IEnumerator QuickHide()
     {
         yield return new WaitForSeconds(0.25f);
+        // Whilst we were waiting we may have spawned again here, so just
+        // check that hasn't happened before hiding it. This will stop it
+        // flickering in that case.
         if (!hittable)
         {
             Hide();
@@ -112,29 +118,32 @@ public class Rat : MonoBehaviour
                 case RatType.Normal:
                     spriteRenderer.sprite = ratCrossEyes;
                     gameManager.AddScore(ratIndex);
-                    //stop the animation
+                    // Stop the animation
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
+                    // Turn off hittable so that we can't keep tapping for score.
                     hittable = false;
                     break;
                 case RatType.RedEyes:
-                    //if lives == 2 reduce, and change sprite
+                    // If lives == 2 reduce, and change sprite.
                     if (lives == 2)
                     {
-                        spriteRenderer.sprite = ratRedEyesHit;
+                        spriteRenderer.sprite = redEyesRatHit;
                         lives--;
                     }
                     else
                     {
-                        spriteRenderer.sprite = ratRedCrossEyes;
+                        spriteRenderer.sprite = RedRatCrossEyes;
                         gameManager.AddScore(ratIndex);
-                        //stop the animation
+                        // Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
+                        // Turn off hittable so that we can't keep tapping for score.
                         hittable = false;
                     }
                     break;
                 case RatType.Cactus:
+                    // Game over, 1 for cactus.
                     gameManager.GameOver(1);
                     break;
                 default:
@@ -145,43 +154,45 @@ public class Rat : MonoBehaviour
 
     private void CreateNext()
     {
-        //creates a cactus if random number is within set range
         float random = Random.Range(0f, 1f);
         if (random < cactusRate)
         {
+            // Make a cactus.
             ratType = RatType.Cactus;
-            spriteRenderer.sprite = cactus;
+            spriteRenderer.sprite = Cactus;
         }
         else
         {
-            //creates a red eyes rat if random number is within set range
             random = Random.Range(0f, 1f);
-            if (random < redEyeRate)
+            if (random < redEyesRate)
             {
+                // Create a red eyes rat.
                 ratType = RatType.RedEyes;
-                spriteRenderer.sprite = ratRedEyes;
+                spriteRenderer.sprite = redEyesRat;
                 lives = 2;
             }
             else
             {
-                //creates a normal rat if other options aren't selected
+                // Create a normal rat.
                 ratType = RatType.Normal;
                 spriteRenderer.sprite = rat;
                 lives = 1;
             }
         }
+        // Mark as hittable so we can register an onclick event.
         hittable = true;
     }
 
+    // As the level progresses the game gets harder.
     private void SetLevel(int level)
     {
-        //as level increases cactus rate increases
+        // As level increases increse the cactus rate to 0.25 at level 10.
         cactusRate = Mathf.Min(level * 0.025f, 0.25f);
 
-        //as level increases red eyes rat rate increases
-        redEyeRate = Mathf.Min(level * 0.025f, 1f);
+        // Increase the amounts of RedEyesRats until 100% at level 40.
+        redEyesRate = Mathf.Min(level * 0.025f, 1f);
 
-        //rat visibility duration gets shorter as level increases
+        // Duration bounds get quicker as we progress. No cap on insanity.
         float durationMin = Mathf.Clamp(1 - level * 0.1f, 0.01f, 1f);
         float durationMax = Mathf.Clamp(2 - level * 0.1f, 0.01f, 2f);
         duration = Random.Range(durationMin, durationMax);
@@ -189,10 +200,10 @@ public class Rat : MonoBehaviour
 
     private void Awake()
     {
+        // Get references to the components we'll need.
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-
-        //work out rat box collider values
+        // Work out collider values.
         boxOffset = boxCollider2D.offset;
         boxSize = boxCollider2D.size;
         boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
@@ -206,15 +217,17 @@ public class Rat : MonoBehaviour
         StartCoroutine(ShowHide(startPosition, endPosition));
     }
 
+    // Used by the game manager to uniquely identify rats. 
     public void SetIndex(int index)
     {
         ratIndex = index;
     }
 
+    // Used to freeze the game on finish.
     public void StopGame()
     {
         hittable = false;
         StopAllCoroutines();
     }
 }
-  
+

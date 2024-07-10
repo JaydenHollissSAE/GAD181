@@ -18,21 +18,21 @@ public class GameManager : MonoBehaviour
     private int score;
     private bool playing = false;
 
-    
+
     public void StartGame()
     {
+        // Hide/show the UI elements we don't/do want to see.
         playButton.SetActive(false);
-
-        //hide all visible rats
+       
+        // Hide all the visible rats.
         for (int i = 0; i < rats.Count; i++)
         {
             rats[i].Hide();
             rats[i].SetIndex(i);
         }
-        //remove any old game state
+        // Remove any old game state.
         currentRats.Clear();
-
-        //start with 30 seconds
+        // Start with 30 seconds.
         remainingTime = startingTime;
         score = 0;
         playing = true;
@@ -59,11 +59,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(int type)
     {
+        // Hide all moles.
         foreach (Rat rat in rats)
         {
             rat.StopGame();
         }
-        //stop the game and show the UI
+        // Stop the game and show the start UI.
         playing = false;
         playButton.SetActive(true);
     }
@@ -72,17 +73,19 @@ public class GameManager : MonoBehaviour
     {
         if (playing)
         {
-            //update time
+            // Update time.
             remainingTime -= Time.deltaTime;
-            if(remainingTime <= 0)
+            if (remainingTime <= 0)
             {
                 remainingTime = 0;
                 GameOver(0);
             }
-
+            // Check if we need to start any more moles.
             if (currentRats.Count <= (score / 10))
             {
+                // Choose a random rat.
                 int index = Random.Range(0, rats.Count);
+                // Doesn't matter if it's already doing something, we'll just try again next frame.
                 if (!currentRats.Contains(rats[index]))
                 {
                     currentRats.Add(rats[index]);

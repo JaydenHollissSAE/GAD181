@@ -6,10 +6,10 @@ MonoImporter:
   defaultReferences:
   - rat: {fileID: 21300000, guid: d896bc6788a0cd942aa5f08005ae94b6, type: 3}
   - ratCrossEyes: {fileID: 21300000, guid: 3362def50798ccd40802fe1ce5df212e, type: 3}
-  - ratRedEyes: {fileID: 21300000, guid: ddc5954a910158b40a138e34fd976432, type: 3}
-  - ratRedEyesHit: {fileID: 21300000, guid: 6d8dd0871d4b2eb428bc3248a6d4eb6c, type: 3}
-  - ratRedCrossEyes: {fileID: 21300000, guid: 4112afd366a8b554aae8e2e84eb8fcce, type: 3}
-  - cactus: {fileID: 21300000, guid: fa1cbcb2d58bcdb4592c69db1efd8558, type: 3}
+  - redEyesRat: {fileID: 21300000, guid: ddc5954a910158b40a138e34fd976432, type: 3}
+  - redEyesRatHit: {fileID: 21300000, guid: 6d8dd0871d4b2eb428bc3248a6d4eb6c, type: 3}
+  - RedRatCrossEyes: {fileID: 21300000, guid: 4112afd366a8b554aae8e2e84eb8fcce, type: 3}
+  - Cactus: {fileID: 21300000, guid: fa1cbcb2d58bcdb4592c69db1efd8558, type: 3}
   - gameManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
