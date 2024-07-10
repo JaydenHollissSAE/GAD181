@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Objects")]
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject outOfTimeText;
+    [SerializeField] private GameObject cactusFailText;
+    [SerializeField] private TMPro.TextMeshProUGUI timeText;
+    [SerializeField] private TMPro.TextMeshProUGUI scoreText;
+
 
     //initial amount of time
     private float startingTime = 30f;
@@ -23,6 +29,9 @@ public class GameManager : MonoBehaviour
     {
         // Hide/show the UI elements we don't/do want to see.
         playButton.SetActive(false);
+        outOfTimeText.SetActive(false);
+        cactusFailText.SetActive(false);
+        gameUI.SetActive(true);
        
         // Hide all the visible rats.
         for (int i = 0; i < rats.Count; i++)
@@ -35,6 +44,7 @@ public class GameManager : MonoBehaviour
         // Start with 30 seconds.
         remainingTime = startingTime;
         score = 0;
+        scoreText.text = "0";
         playing = true;
     }
 
@@ -42,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         //add to and update score
         score += 1;
+        scoreText.text = $"{score}";
         //increase time by one second
         remainingTime += 1;
         //remove from active rats
@@ -59,6 +70,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(int type)
     {
+        //Show game over message.
+        if (type == 0)
+        {
+            outOfTimeText.SetActive(true);
+        }
+        else
+        {
+            cactusFailText.SetActive(true);
+        }
         // Hide all moles.
         foreach (Rat rat in rats)
         {
@@ -80,6 +100,7 @@ public class GameManager : MonoBehaviour
                 remainingTime = 0;
                 GameOver(0);
             }
+            timeText.text = $"{(int)remainingTime / 60}:{(int)remainingTime % 60:D2}";
             // Check if we need to start any more moles.
             if (currentRats.Count <= (score / 10))
             {
