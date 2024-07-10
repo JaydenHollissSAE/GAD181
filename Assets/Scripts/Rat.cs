@@ -200,7 +200,7 @@ public class Rat : MonoBehaviour
 
     private void Awake()
     {
-        // Get references to the components we'll need.
+        // Get references to the components needed.
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         // Work out collider values.
@@ -217,7 +217,7 @@ public class Rat : MonoBehaviour
         StartCoroutine(ShowHide(startPosition, endPosition));
     }
 
-    // Used by the game manager to uniquely identify rats. 
+    // Used by the game manager to identify rats. 
     public void SetIndex(int index)
     {
         ratIndex = index;
