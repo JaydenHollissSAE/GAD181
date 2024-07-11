@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MineControl : MonoBehaviour
 {
-    Renderer mineRenderer;
+    SpriteRenderer mineSpriteRenderer;
 
     public void DisableMine(Collider2D mine)
     {
         Debug.Log("disabled " + mine);
         mine.enabled = false;
-        mineRenderer = mine.GetComponent<Renderer>();
+        mineSpriteRenderer = mine.GetComponent<SpriteRenderer>();
 
-        mineRenderer.material.SetColor("_Color", Color.grey);
+        mineSpriteRenderer.enabled = true;
+        
     }
 }

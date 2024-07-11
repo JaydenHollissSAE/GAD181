@@ -21,7 +21,7 @@ public class MineSetup : MonoBehaviour
 
     public void SetUpMines()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             float xPos = Mathf.Round(Random.Range(-5f, 4f)) + 0.5f;
             float yPos = Mathf.Round(Random.Range(-5f, 4f)) + 0.5f;
