@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class MineControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Renderer mineRenderer;
 
-    // Update is called once per frame
-    void Update()
+    public void DisableMine(Collider2D mine)
     {
-        
+        Debug.Log("disabled " + mine);
+        mine.enabled = false;
+        mineRenderer = mine.GetComponent<Renderer>();
+
+        mineRenderer.material.SetColor("_Color", Color.grey);
     }
 }

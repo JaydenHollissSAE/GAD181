@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public Transform movePoint;
 
     public LayerMask whatIsMines;
+
+    public MineControl mineControl;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(hit.gameObject);
             movePoint.position = new Vector3(4.5f, -4.5f, -1);
+            mineControl.DisableMine(hit);
             hit = null;
         }
     }
