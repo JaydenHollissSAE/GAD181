@@ -12,6 +12,7 @@ public class BalloonBD : MonoBehaviour
     public void Pop()
     {
         GameManagerBD.inst.pointCallback.Invoke(value);
+        Destroy(gameObject);
     }
     private void Start()
     {
@@ -20,5 +21,9 @@ public class BalloonBD : MonoBehaviour
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime*moveSpeed);
+        if (Vector2.Distance(transform.position, moveTo) <= 1.0f) 
+        {
+            Destroy(gameObject);
+        }
     }
 }
