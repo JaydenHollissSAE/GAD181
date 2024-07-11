@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 448792954}
   - component: {fileID: 448792953}
+  - component: {fileID: 448792956}
+  - component: {fileID: 448792955}
   m_Layer: 0
   m_Name: GameManagerBD
   m_TagString: Untagged
@@ -170,6 +172,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &448792955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448792952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356098726eb705a4b949a6ddcbaa8a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &448792956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448792952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058ee160949a9ff42a7f4c92ebed34e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &532185548
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +321,10 @@ MonoBehaviour:
   - {fileID: 8108883600075456284, guid: cb560f647b9e8064eb99473a4f52bbe0, type: 3}
   - {fileID: 2213286410740965602, guid: eacd7ceb5421d44489971d848ff4655c, type: 3}
   - {fileID: 8140935815190987859, guid: c1093d857f9dc0246abfdc592a369a91, type: 3}
+  spawnPositions:
+  - {x: -12, y: 3}
+  - {x: 12, y: 0}
+  - {x: -12, y: -3}
 --- !u!4 &1534096297
 Transform:
   m_ObjectHideFlags: 0
