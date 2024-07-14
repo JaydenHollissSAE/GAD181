@@ -2,19 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBD : MonoBehaviour
+namespace BalloonDarts
 {
-
-    // Update is called once per frame
-    void Update()
+    public class PlayerBD : MonoBehaviour
     {
-        if(Input.GetMouseButtonDown(0))
+        //[SerializeField] GameObject dart;
+
+        // Update is called once per frame
+        void Update()
         {
-            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(r, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                hit.transform.gameObject.GetComponent<BalloonBD>().Pop();
+                //Vector3 mousePos = Input.mousePosition;
+                //Vector3 dartPos = Camera.current.ScreenToWorldPoint(mousePos);
+                //GameObject d = Instantiate(dart, dartPos, Quaternion.identity);
+                Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+                //Debug.Log(Input.mousePosition);
+                //Debug.Log(dartPos);
+                RaycastHit hit;
+                if (Physics.Raycast(r, out hit))
+                {
+                    hit.transform.gameObject.GetComponent<BalloonBD>().Pop();
+                }
             }
         }
     }
