@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class PointCallback : UnityEvent<int>
+namespace BalloonDarts
 {
-
-}
-
-public class GameManagerBD : MonoBehaviour
-{
-    public static GameManagerBD inst;
-    public PointCallback pointCallback;
-
-    void Awake()
+    [System.Serializable]
+    public class PointCallback : UnityEvent<int>
     {
-        if (inst == null)
+
+    }
+
+    public class GameManagerBD : MonoBehaviour
+    {
+        public static GameManagerBD inst;
+        public PointCallback pointCallback;
+
+        void Awake()
         {
-            inst = this;
-        }
-        else
-        {
-            Destroy(this);
+            if (inst == null)
+            {
+                inst = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
     }
 }

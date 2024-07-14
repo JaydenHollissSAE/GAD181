@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointTrackerBD : MonoBehaviour
+namespace BalloonDarts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PointTrackerBD : MonoBehaviour
     {
-        GameManagerBD.inst.pointCallback.AddListener(UpdateUI);
+        // Start is called before the first frame update
+        void Start()
+        {
+            GameManagerBD.inst.pointCallback.AddListener(UpdateUI);
 
-    }
+        }
 
-    // Update is called once per frame
-    void UpdateUI(int points)
-    {
-        Debug.Log("Points here: " + points);
+        // Update is called once per frame
+        void UpdateUI(int points)
+        {
+            Debug.Log("Points here: " + points);
+        }
     }
 }
