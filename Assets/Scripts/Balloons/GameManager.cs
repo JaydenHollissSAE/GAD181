@@ -11,10 +11,11 @@ namespace BalloonDarts
 
     }
 
-    public class GameManagerBD : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
-        public static GameManagerBD inst;
+        public static GameManager inst;
         public PointCallback pointCallback;
+        public UnityEvent timeUp;
 
         void Awake()
         {

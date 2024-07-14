@@ -15,7 +15,7 @@ namespace BalloonDarts
 
         public void Pop()
         {
-            GameManagerBD.inst.pointCallback.Invoke(value);
+            GameManager.inst.pointCallback.Invoke(value);
             StartCoroutine(PopAnimation());
         }
         private void Start()
