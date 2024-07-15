@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using whackAMouse;
 
 public class Rat : MonoBehaviour
 {
@@ -80,18 +81,18 @@ public class Rat : MonoBehaviour
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
 
-        // If we got to the end and it's still hittable then we missed it.
+        // If it gets to the end and it's still hittable then it was missed.
         if (hittable)
         {
             hittable = false;
-            // We only give time penalty if it isn't a cactus.
+            // Only give time penalty if it isn't a cactus.
             gameManager.Missed(ratIndex, ratType != RatType.Cactus);
         }
     }
 
     public void Hide()
     {
-        // Set the appropriate rat parameters to hide it.
+        // Set rat parameters to hide it.
         transform.localPosition = startPosition;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
@@ -100,7 +101,7 @@ public class Rat : MonoBehaviour
     private IEnumerator QuickHide()
     {
         yield return new WaitForSeconds(0.25f);
-        // Whilst we were waiting we may have spawned again here, so just
+        // While we were waiting we may have spawned again here, so just
         // check that hasn't happened before hiding it. This will stop it
         // flickering in that case.
         if (!hittable)
@@ -121,7 +122,7 @@ public class Rat : MonoBehaviour
                     // Stop the animation
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
-                    // Turn off hittable so that we can't keep tapping for score.
+                    // Turn off hittable so it can't keep being tapped for score.
                     hittable = false;
                     break;
                 case RatType.RedEyes:
@@ -138,7 +139,7 @@ public class Rat : MonoBehaviour
                         // Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
-                        // Turn off hittable so that we can't keep tapping for score.
+                        // Turn off hittable so it can't keep being tapped for score.
                         hittable = false;
                     }
                     break;
@@ -179,7 +180,7 @@ public class Rat : MonoBehaviour
                 lives = 1;
             }
         }
-        // Mark as hittable so we can register an onclick event.
+        // Mark as hittable so an onclick event can be rigestered.
         hittable = true;
     }
 
