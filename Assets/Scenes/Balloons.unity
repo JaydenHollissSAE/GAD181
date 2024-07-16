@@ -687,7 +687,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 945465752181675623, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: gameTime
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5081197717155864796, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_Pivot.x
