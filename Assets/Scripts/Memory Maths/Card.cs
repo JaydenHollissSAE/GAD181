@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+namespace Milo.MemoryMath
 {
-    SpriteRenderer spriteRenderer;
-
-    private void Start()
+    public class Card : MonoBehaviour
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer;
 
-    }
+        private void Start()
+        {
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-    private void OnMouseDown()
-    {
-        Debug.Log("Card " + this + " clicked");
-    }
+        }
 
-    private void OnMouseOver()
-    {
+        private void OnMouseDown()
+        {
+            Debug.Log("Card " + this + " clicked");
+        }
 
-        spriteRenderer.color = Color.grey;
-    }
+        private void OnMouseOver()
+        {
+            spriteRenderer.color = Color.grey;
+        }
 
-    private void OnMouseExit()
-    {
-        spriteRenderer.color = Color.white;
+        private void OnMouseExit()
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
 }
+

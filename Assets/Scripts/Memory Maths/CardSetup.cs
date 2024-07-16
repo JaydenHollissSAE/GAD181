@@ -2,32 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardSetup : MonoBehaviour
+namespace Milo.MemoryMath
 {
-    public GameObject[] cards = new GameObject[9];
-
-    private void Start()
+    public class CardSetup : MonoBehaviour
     {
-        ArrangeCards();
-    }
+        public GameObject[] cards = new GameObject[9];
 
-    public void ArrangeCards()
-    {
-        for(int i = 0; i < cards.Length; i++)
+        public Card card;
+
+        public bool cardsFlipped = false;
+
+        private void Start()
         {
-            float randomX = Random.Range(-0.35f, 0.35f);
-            float randomY = Random.Range(-0.35f, 0.35f);
-            float randomRot = Random.Range(-45f, 45f);
-            cards[i].transform.localPosition = new Vector3(randomX, randomY, -1f);
-            cards[i].transform.rotation = Quaternion.Euler(0,0,randomRot);
+            ArrangeCards();
+            DoDelayAction(5f);
         }
-    }
 
-    public void FlipCards ()
-    {
-        for (int i = 0; i < cards.Length; i++)
+        // private void Update()
+        // {
+        //     FlipCards();
+        // }
+
+        public void ArrangeCards()
         {
-            
+            for (int i = 0; i < cards.Length; i++)
+            {
+                float randomX = Random.Range(-0.35f, 0.35f);
+                float randomY = Random.Range(-0.35f, 0.35f);
+                float randomRot = Random.Range(-45f, 45f);
+                cards[i].transform.localPosition = new Vector3(randomX, randomY, -1f);
+                cards[i].transform.rotation = Quaternion.Euler(0, 0, randomRot);
+            }
+        }
+
+        public void FlipCards()
+        {
+            if (!cardsFlipped)
+            {
+                return;
+            }
+            for (int i = 0; i < cards.Length; i++)
+            {
+                FlipCards();
+            }
+        }
+
+        void DoDelayAction(float delayTime)
+        {
+            StartCoroutine(DelayAction(delayTime));
+        }
+
+        IEnumerator DelayAction(float delayTime)
+        {
+            //Wait for the specified delay time before continuing.
+            yield return new WaitForSeconds(delayTime);
+
+            //Do the action after the delay time has finished.
+            Debug.Log("flipping cards");
+            FlipCards();
+            // cardsFlipped = true;
         }
     }
 }
