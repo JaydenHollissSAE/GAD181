@@ -8,6 +8,8 @@ namespace Milo.MemoryMath
     {
         public GameObject[] cards = new GameObject[9];
 
+        public List<int> cardsSelected = new();
+
         public Card card;
 
         public bool cardsFlipped = false;
@@ -18,10 +20,10 @@ namespace Milo.MemoryMath
             DoDelayAction(5f);
         }
 
-        // private void Update()
-        // {
-        //     FlipCards();
-        // }
+        private void Update()
+        {
+            CheckSelected();
+        }
 
         public void ArrangeCards()
         {
@@ -33,6 +35,11 @@ namespace Milo.MemoryMath
                 cards[i].transform.localPosition = new Vector3(randomX, randomY, -1f);
                 cards[i].transform.rotation = Quaternion.Euler(0, 0, randomRot);
             }
+        }
+
+        public void CheckSelected()
+        {
+            
         }
 
         public void FlipCards()

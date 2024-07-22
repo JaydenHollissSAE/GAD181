@@ -6,6 +6,12 @@ namespace Milo.MemoryMath
 {
     public class Card : MonoBehaviour
     {
+
+        public CardSetup setup;
+
+        [SerializeField] private int cardID;
+        private bool cardSelected;
+
         SpriteRenderer spriteRenderer;
 
         private void Start()
@@ -16,7 +22,20 @@ namespace Milo.MemoryMath
 
         private void OnMouseDown()
         {
-            Debug.Log("Card " + this + " clicked");
+            if(!cardSelected)
+            {
+                cardSelected = true;
+                setup.cardsSelected.Add(cardID);
+
+            } else
+            {
+                cardSelected = false;
+                setup.cardsSelected.Remove(cardID);
+            }
+            for (int i =0;i < setup.cardsSelected.Count;i++)
+            {
+                Debug.Log(setup.cardsSelected[i]);
+            }
         }
 
         private void OnMouseOver()
