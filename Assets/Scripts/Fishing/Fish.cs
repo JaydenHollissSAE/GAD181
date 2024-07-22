@@ -30,8 +30,8 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveTo.x = moveTo.x + Random.Range(-0.003f, 0.003f);
-        moveTo.y = moveTo.y + Random.Range(-0.003f, 0.003f);
+        //moveTo.x = moveTo.x + Random.Range(-0.003f, 0.003f);
+        //moveTo.y = moveTo.y + Random.Range(-0.003f, 0.003f);
         transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * moveSpeed);
         //Debug.Log(moveTo);
     }
