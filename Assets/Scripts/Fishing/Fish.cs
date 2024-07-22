@@ -21,11 +21,30 @@ public class Fish : MonoBehaviour
         Debug.Log(moveTo);
     }
 
-
+    private void SetMovementPos()
+    {
+        moveTo = new Vector2(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10));
+        if (moveTo.x > 9.5 || moveTo.x < -9.5)
+        {
+            while (moveTo.x > 9.5 || moveTo.x < -9.5)
+            {
+                moveTo.x = Random.Range(transform.position.x - 10, transform.position.x + 10);
+            }
+            Debug.Log("Recalculating X");
+        }
+        if (moveTo.y > 4.8 || moveTo.y < -4.8)
+        {
+            while (moveTo.y > 4.8 || moveTo.y < -4.8)
+            {
+                moveTo.y = Random.Range(transform.position.y - 10, transform.position.y + 10);
+            }
+            Debug.Log("Recalculating Y");
+        }
+    }
 
     private IEnumerator MoveFish()
     {
-        moveTo = new Vector2(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10));
+        SetMovementPos();
         Debug.Log("Wait Started");
         yield return new WaitForSeconds(waitTime);
         Debug.Log("I waited for you, just like you asked of me");
