@@ -8,9 +8,21 @@ public class Fish : MonoBehaviour
     private Vector2 moveTo;
     [SerializeField] float waitTime;
     private bool moveBuffer;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] List<Sprite> fishTypes = new List<Sprite>();
+    private float fishSize;
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        fishSize = Random.Range(0.4f, 3f);
+        moveSpeed = Random.Range(0.5f, 30f);
+        waitTime = moveSpeed * Random.Range(0.08f, 0.18f);
+        Debug.Log(Mathf.RoundToInt(100f - fishSize));
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(100f - fishSize);
+        //waitTime = Random.Range(0.8f, 1.8f);
+        //spriteRenderer.sprite = fishTypes[Random.Range(0, fishTypes.Count-1)];
+        transform.localScale = new Vector2(fishSize, fishSize);
         StartCoroutine(MoveFish());
     }
 
@@ -18,7 +30,7 @@ public class Fish : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * moveSpeed);
-        Debug.Log(moveTo);
+        //Debug.Log(moveTo);
     }
 
     private void SetMovementPos()
@@ -30,7 +42,7 @@ public class Fish : MonoBehaviour
             {
                 moveTo.x = Random.Range(transform.position.x - 10, transform.position.x + 10);
             }
-            Debug.Log("Recalculating X");
+            //Debug.Log("Recalculating X");
         }
         if (moveTo.y > 4.8 || moveTo.y < -4.8)
         {
@@ -38,16 +50,16 @@ public class Fish : MonoBehaviour
             {
                 moveTo.y = Random.Range(transform.position.y - 10, transform.position.y + 10);
             }
-            Debug.Log("Recalculating Y");
+            //Debug.Log("Recalculating Y");
         }
     }
 
     private IEnumerator MoveFish()
     {
         SetMovementPos();
-        Debug.Log("Wait Started");
+        //Debug.Log("Wait Started");
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("I waited for you, just like you asked of me");
+        //Debug.Log("I waited for you, just like you asked of me");
         StartCoroutine(MoveFish());
     }
 }
