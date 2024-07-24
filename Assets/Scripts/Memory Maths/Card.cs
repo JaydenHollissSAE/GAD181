@@ -14,6 +14,9 @@ namespace Milo.MemoryMath
 
         SpriteRenderer spriteRenderer;
 
+        public GameObject selectedBoard;
+        public GameObject normalBoard;
+
         private void Start()
         {
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -22,19 +25,22 @@ namespace Milo.MemoryMath
 
         private void OnMouseDown()
         {
+            if (!setup.cardsFlipped) { return; }
             if(!cardSelected)
             {
                 cardSelected = true;
                 setup.cardsSelected.Add(cardID);
-
+                gameObject.transform.SetParent(selectedBoard.transform, false);
             } else
             {
                 cardSelected = false;
                 setup.cardsSelected.Remove(cardID);
+                gameObject.transform.SetParent(normalBoard.transform, false);
+
             }
             for (int i =0;i < setup.cardsSelected.Count;i++)
             {
-                Debug.Log(setup.cardsSelected[i]);
+                Debug.Log(i + ": " + setup.cardsSelected[i]);
             }
         }
 

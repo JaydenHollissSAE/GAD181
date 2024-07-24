@@ -7,17 +7,24 @@ namespace Milo.MemoryMath
     public class CardSetup : MonoBehaviour
     {
         public GameObject[] cards = new GameObject[9];
+        public SpriteRenderer[] cardRenderers = new SpriteRenderer[9];
+
+        private Sprite[] cardSprites = new Sprite[9];
 
         public List<int> cardsSelected = new();
 
-        public Card card;
-
         public bool cardsFlipped = false;
+
+        public Sprite backOfCard;
 
         private void Start()
         {
             ArrangeCards();
             DoDelayAction(5f);
+            for(int i  = 0; i < cards.Length; i++) {
+                cardRenderers[i] = cards[i].GetComponent<SpriteRenderer>();
+                cardSprites[i] = cardRenderers[i].sprite;
+            }
         }
 
         private void Update()
@@ -46,12 +53,21 @@ namespace Milo.MemoryMath
         {
             if (!cardsFlipped)
             {
-                return;
-            }
-            for (int i = 0; i < cards.Length; i++)
+                cardsFlipped = true;
+                for (int i = 0; i < cards.Length; i++)
+                {
+                    cardRenderers[i].sprite = backOfCard;
+                }
+            } else
             {
-                FlipCards();
+                cardsFlipped = false;
+
+                for (int i = 0; i < cards.Length; i++)
+                {
+                    cardRenderers[i].sprite = cardSprites[i];
+                }
             }
+            
         }
 
         void DoDelayAction(float delayTime)
@@ -67,7 +83,6 @@ namespace Milo.MemoryMath
             //Do the action after the delay time has finished.
             Debug.Log("flipping cards");
             FlipCards();
-            // cardsFlipped = true;
         }
     }
 }
