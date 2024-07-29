@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BalloonDarts
@@ -15,7 +14,7 @@ namespace BalloonDarts
 
         public void Pop()
         {
-            GameManagerBD.inst.pointCallback.Invoke(value);
+            GameManager.inst.pointCallback.Invoke(value);
             StartCoroutine(PopAnimation());
         }
         private void Start()

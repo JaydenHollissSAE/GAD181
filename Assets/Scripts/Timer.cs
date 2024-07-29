@@ -1,3 +1,4 @@
+using BalloonDarts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,8 +27,8 @@ public class Timer : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         timeCalc = gameTime / timerSprites.Count * (currentSpriteId + 1);
-        Debug.Log(timeCalc);
-        Debug.Log(timeCalc - (timeCalc / (currentSpriteId + 1)));
+        //Debug.Log(timeCalc);
+        //Debug.Log(timeCalc - (timeCalc / (currentSpriteId + 1)));
         if (timePassed >= timeCalc - (timeCalc / (currentSpriteId+1))) 
         {
             image.sprite = timerSprites[currentSpriteId];
@@ -40,6 +41,10 @@ public class Timer : MonoBehaviour
         if (timePassed < gameTime)
         {
             StartCoroutine(RunTimer());
+        }
+        else
+        {
+            GameManager.inst.timeUp.Invoke();
         }
     }
 
