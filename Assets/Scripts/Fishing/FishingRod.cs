@@ -6,19 +6,33 @@ using UnityEngine;
 public class FishingRod : MonoBehaviour
 {
     private Vector2 mousePos;
-    [SerializeField] GameObject fishingRod;
+    [SerializeField] Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mouseWorldPos);
-        fishingRod.transform.position = Vector2.MoveTowards(transform.position, new Vector2(mouseWorldPos.x, fishingRod.transform.position.y), Time.deltaTime * 20.0f);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector2 moveTo = new Vector2(hit.point.x, gameObject.transform.position.y);
+            Debug.Log(moveTo);
+            gameObject.transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * 20.0f);
+            Debug.Log("Ray Hit");
+        }
+        else
+        {
+            Debug.Log("Ray not Hit");
+        }
+
+        
 
         //mousePos = new Vector2(SceneView.currentDrawingSceneView.camera.pixelWidth-Input.mousePosition.x, SceneView.currentDrawingSceneView.camera.pixelHeight - Input.mousePosition.y);
         //Debug.Log(mousePos);
