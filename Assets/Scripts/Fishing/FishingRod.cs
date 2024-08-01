@@ -23,8 +23,16 @@ public class FishingRod : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Vector2 moveTo = new Vector2(hit.point.x, gameObject.transform.position.y);
+            if (moveTo.x < -8)
+            {
+                moveTo.x = -8;
+            }
+            else if (moveTo.x > 8) 
+            { 
+                moveTo.x = 8;
+            }
             Debug.Log(moveTo);
-            gameObject.transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * 20.0f);
+            gameObject.transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * 11.0f);
             Debug.Log("Ray Hit");
         }
         else

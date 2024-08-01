@@ -22,7 +22,7 @@ public class Fish : MonoBehaviour
         Debug.Log(Mathf.RoundToInt(100f - fishSize));
         spriteRenderer.sortingOrder = Mathf.RoundToInt(100f - fishSize);
         waitTime = Random.Range(0.5f, 1.5f);
-        //spriteRenderer.sprite = fishTypes[Random.Range(0, fishTypes.Count-1)];
+        spriteRenderer.sprite = fishTypes[Random.Range(0, fishTypes.Count-1)];
         transform.localScale = new Vector2(fishSize, fishSize);
         StartCoroutine(MoveFish());
     }
@@ -39,9 +39,17 @@ public class Fish : MonoBehaviour
     private void SetMovementPos()
     {
         moveTo = new Vector2(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10));
-        if (moveTo.x > 9.5 || moveTo.x < -9.5)
+        if (moveTo.x > transform.position.x && transform.localScale.x > 0)
         {
-            while (moveTo.x > 9.5 || moveTo.x < -9.5)
+            transform.localScale = new Vector3 (-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+        else if (moveTo.x < transform.position.x && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+        if (moveTo.x > 8 || moveTo.x < -8)
+        {
+            while (moveTo.x > 8 || moveTo.x < -8)
             {
                 moveTo.x = Random.Range(transform.position.x - 10, transform.position.x + 10);
             }
