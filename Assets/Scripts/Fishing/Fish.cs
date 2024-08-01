@@ -19,7 +19,7 @@ public class Fish : MonoBehaviour
         fishSize = Random.Range(0.4f, 3f);
         moveSpeed = Random.Range(0.5f, 30f);
         //waitTime = moveSpeed * Random.Range(0.08f, 0.12f);
-        Debug.Log(Mathf.RoundToInt(100f - fishSize));
+        //Debug.Log(Mathf.RoundToInt(100f - fishSize));
         spriteRenderer.sortingOrder = Mathf.RoundToInt(100f - fishSize);
         waitTime = Random.Range(0.5f, 1.5f);
         spriteRenderer.sprite = fishTypes[Random.Range(0, fishTypes.Count-1)];

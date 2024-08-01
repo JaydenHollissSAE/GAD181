@@ -31,13 +31,9 @@ public class FishingRod : MonoBehaviour
             { 
                 moveTo.x = 8;
             }
-            Debug.Log(moveTo);
+            //Debug.Log(moveTo);
             gameObject.transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * 11.0f);
-            Debug.Log("Ray Hit");
-        }
-        else
-        {
-            Debug.Log("Ray not Hit");
+            //Debug.Log("Ray Hit");
         }
 
         
