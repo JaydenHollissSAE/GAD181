@@ -33,6 +33,11 @@ public class Target : MonoBehaviour
         if (!hasBeenHit && collision.gameObject.CompareTag("Ball"))
         {
             hasBeenHit = true; // Set flag to true to prevent multiple hits
+            Ball ball = collision.gameObject.GetComponent<Ball>();
+            if (ball != null)
+            {
+                ball.HitTarget(); // Inform the ball that it hit the target
+            }
             if (gameManager != null)
             {
                 gameManager.LevelUp(); // Notify GameManager about the hit

@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc24aa0cecc00634290b52dbd238037b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfThrows: 3
+  amountOfThrows: 5
   ballPrefab: {fileID: 4419007252315814049, guid: 0f3438807d6f86440a89a062f5800621, type: 3}
   spawnPosition: {x: -6.73, y: -1.49, z: 0}
 --- !u!1 &1978735613

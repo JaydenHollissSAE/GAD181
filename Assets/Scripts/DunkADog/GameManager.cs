@@ -10,7 +10,7 @@ namespace dunkADog
 
         private int score;
         private int level = 1;
-        public int amountOfThrows = 3;
+        public int amountOfThrows = 5;
         private bool playing = false;
 
         public GameObject ballPrefab;
@@ -24,7 +24,7 @@ namespace dunkADog
         void Start()
         {
             target = GameObject.FindObjectOfType<Target>();
-            amountOfThrows = 3;
+            amountOfThrows = 5;
 
             StartGame(); // REMOVE LATER
         }
@@ -44,13 +44,21 @@ namespace dunkADog
             SpawnBall();
         }
 
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        }
+
         public void Missed()
         {
             if (amountOfThrows > 0)
             {
                 amountOfThrows--;
             }
-            else if (amountOfThrows <= 0)
+            if (amountOfThrows <= 0)
             {
                 GameOver();
             }
@@ -71,10 +79,12 @@ namespace dunkADog
             {
                 Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
             }
+            target.ResetHitStatus();
+            
         }
         void GameOver()
         {
-
+            Debug.Log("Game Over! Out of Throws");
         }
     }
 }

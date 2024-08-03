@@ -12,7 +12,8 @@ public class Ball : MonoBehaviour
     private Vector3 startPosition;
     private static GameObject ballPrefab;
 
-    private GameManager gameManager;
+    private bool hitTarget = false;
+
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class Ball : MonoBehaviour
         rigidbody2d.gravityScale = 0;
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
     }
+
     void OnMouseDown()
     {
         CalculateThrowVector();
@@ -73,6 +75,20 @@ public class Ball : MonoBehaviour
     private IEnumerator DestroyAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified duration
+
         Destroy(gameObject); // Destroy the ball
+
+        if (!hitTarget)
+        {
+            GameManager.Instance.Missed();
+        }
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SpawnBall();
+        }
+    }
+    public void HitTarget()
+    {
+        hitTarget = true; // Set boolean to true when the ball hits the target
     }
 }
