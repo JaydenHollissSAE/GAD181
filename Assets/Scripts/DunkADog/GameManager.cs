@@ -6,6 +6,14 @@ namespace dunkADog
 {
     public class GameManager : MonoBehaviour
     {
+
+        private int score;
+        private int level;
+
+        private bool playing = false;
+
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -16,6 +24,23 @@ namespace dunkADog
         void Update()
         {
 
+        }
+
+        public void StartGame()
+        {
+            playing = true;
+            level = 1;
+        }
+
+        public void Missed()
+        {
+
+        }
+
+
+        public void NextLevel()
+        {
+            level++;
         }
     }
 }
