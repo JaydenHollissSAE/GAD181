@@ -8,10 +8,18 @@ public class Ball : MonoBehaviour
     Vector3 throwVector;
     Rigidbody2D rigidbody2d;
     LineRenderer linerenderer;
+
+    private Vector3 startPosition;
+    private static GameObject ballPrefab;
+
+    private GameManager gameManager;
+
     void Awake()
     {
         rigidbody2d = this.GetComponent<Rigidbody2D>();
         linerenderer = this.GetComponent<LineRenderer>();
+
+        startPosition = transform.position;
 
         rigidbody2d.gravityScale = 0;
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -59,5 +67,12 @@ public class Ball : MonoBehaviour
         rigidbody2d.constraints = RigidbodyConstraints2D.None; // Remove constraints
 
         rigidbody2d.AddForce(throwVector);
+        StartCoroutine(DestroyAfterDelay(3.0f)); // Start coroutine to destroy the ball after 3 seconds
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified duration
+        Destroy(gameObject); // Destroy the ball
     }
 }
