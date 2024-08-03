@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace Milo.MemoryMath
 {
@@ -8,6 +9,8 @@ namespace Milo.MemoryMath
     {
         public GameObject[] cards = new GameObject[9];
         public SpriteRenderer[] cardRenderers = new SpriteRenderer[9];
+        public TMP_Text sumText;
+        public Sum sumScript;
 
         private Sprite[] cardSprites = new Sprite[9];
 
@@ -77,12 +80,10 @@ namespace Milo.MemoryMath
 
         IEnumerator DelayAction(float delayTime)
         {
-            //Wait for the specified delay time before continuing.
             yield return new WaitForSeconds(delayTime);
-
-            //Do the action after the delay time has finished.
-            Debug.Log("flipping cards");
+            // Debug.Log("flipping cards");
             FlipCards();
+            sumText.text = sumScript.sumGoal.ToString();
         }
     }
 }

@@ -2,23 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sum : MonoBehaviour
+namespace Milo.MemoryMath
 {
-    public int sumGoal;
-    // Start is called before the first frame update
-    void Start()
-    {
-        GenerateSumGoal();
-    }
 
-    // Update is called once per frame
-    void Update()
+    public class Sum : MonoBehaviour
     {
-        
-    }
+        public CardSetup setup;
 
-    public void GenerateSumGoal()
-    {
-        sumGoal = Random.Range(10, 30);
+        public int sumGoal;
+        // Start is called before the first frame update
+        void Start()
+        {
+            GenerateSumGoal();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void GenerateSumGoal()
+        {
+            sumGoal = Random.Range(10, 30);
+        }
+
+        public int AddUpCards()
+        {
+            int tempSum = 0;
+            foreach (int number in setup.cardsSelected)
+            {
+                tempSum += number;
+            }
+            return tempSum;
+        }
+
+        public void ConfirmSelection()
+        {
+            if (AddUpCards() == sumGoal)
+            {
+                Debug.Log("You Win!");
+            } else
+            {
+                Debug.Log("You Lose...");
+            }
+        }
     }
 }

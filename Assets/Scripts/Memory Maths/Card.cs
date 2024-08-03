@@ -38,10 +38,10 @@ namespace Milo.MemoryMath
                 gameObject.transform.SetParent(normalBoard.transform, false);
 
             }
-            for (int i =0;i < setup.cardsSelected.Count;i++)
-            {
-                Debug.Log(i + ": " + setup.cardsSelected[i]);
-            }
+            //for (int i =0;i < setup.cardsSelected.Count;i++)
+            //{
+            //    Debug.Log(i + ": " + setup.cardsSelected[i]);
+            //}
         }
 
         private void OnMouseOver()
