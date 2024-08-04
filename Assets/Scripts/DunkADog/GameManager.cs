@@ -17,6 +17,10 @@ namespace dunkADog
         public Vector3 spawnPosition;
 
         private Target target;
+        public GameObject spriteToRotate;
+        public GameObject spriteToFall;
+        public Rigidbody2D rigidBody2d;
+        
 
 
 
@@ -26,6 +30,7 @@ namespace dunkADog
             target = GameObject.FindObjectOfType<Target>();
             amountOfThrows = 5;
 
+            
             StartGame(); // REMOVE LATER
         }
 
@@ -79,6 +84,7 @@ namespace dunkADog
 
             if (level == 6)
             {
+
                 Victory();
             }
         }
@@ -100,11 +106,35 @@ namespace dunkADog
         void GameOver()
         {
             Debug.Log("Game Over! Out of Throws");
+            StopTargetMovement();
+            ResetTargetPosition();
         }
 
         void Victory()
         {
+            if (spriteToRotate != null)
+            {
+                spriteToRotate.transform.Rotate(new Vector3(0, 0, 90));    
+            }
+            
+            StopTargetMovement();
+            ResetTargetPosition();
             playing = false;
+        }
+        public void StopTargetMovement()
+        {
+            if (target != null)
+            {
+                target.StopMovement();
+            }
+        }
+
+        public void ResetTargetPosition()
+        {
+            if (target != null)
+            {
+                target.ResetPosition();
+            }
         }
     }
 }
