@@ -8,11 +8,11 @@ namespace dunkADog
     {
         public static GameManager Instance { get; private set; }
 
-        private int score;
+        private int score = 0;
         private int level = 1;
         public int amountOfThrows = 5;
         private bool playing = false;
-
+        
         public GameObject ballPrefab;
         public Vector3 spawnPosition;
 
@@ -39,7 +39,8 @@ namespace dunkADog
         {
             playing = true;
             level = 1;
-            Debug.Log("Game Started. Initial Level: " + level);
+            score = 0;
+            Debug.Log("Game Started. Initial Level: " + level + " Current Score: " + score);
 
             SpawnBall();
         }
@@ -72,6 +73,14 @@ namespace dunkADog
 
             target.frequency++;
             Debug.Log("Speed Increase called. Current speed: " + target.frequency);
+
+            AddScore();
+            Debug.Log("Current Score: " + score);
+
+            if (level == 6)
+            {
+                Victory();
+            }
         }
         public void SpawnBall()
         {
@@ -82,9 +91,20 @@ namespace dunkADog
             target.ResetHitStatus();
             
         }
+
+        void AddScore()
+        {
+            score = score + 20;
+        }
+
         void GameOver()
         {
             Debug.Log("Game Over! Out of Throws");
+        }
+
+        void Victory()
+        {
+            playing = false;
         }
     }
 }
