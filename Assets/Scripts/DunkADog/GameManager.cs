@@ -14,6 +14,7 @@ namespace dunkADog
         private bool playing = false;
         
         public GameObject ballPrefab;
+        public Sprite[] ballSprites; 
         public Vector3 spawnPosition;
 
         private Target target;
@@ -92,10 +93,19 @@ namespace dunkADog
         {
             if (ballPrefab != null && amountOfThrows > 0)
             {
-                Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+                GameObject ball = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+
+                // Get the SpriteRenderer component
+                SpriteRenderer spriteRenderer = ball.GetComponent<SpriteRenderer>();
+
+                if (spriteRenderer != null && ballSprites.Length > 0)
+                {
+                    // Assign a random sprite from the array
+                    spriteRenderer.sprite = ballSprites[Random.Range(0, ballSprites.Length)];
+                }
+
+                target.ResetHitStatus();
             }
-            target.ResetHitStatus();
-            
         }
 
         void AddScore()

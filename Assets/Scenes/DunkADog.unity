@@ -669,7 +669,7 @@ MonoBehaviour:
   amplitude: 3
   frequency: 1
   resetDuration: 1
---- !u!1 &769154940
+--- !u!1 &772813673
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -677,22 +677,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 769154942}
-  - component: {fileID: 769154941}
-  m_Layer: 0
-  m_Name: UpperFloor
+  - component: {fileID: 772813676}
+  - component: {fileID: 772813675}
+  m_Layer: 3
+  m_Name: Floor 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &769154941
+--- !u!212 &772813675
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769154940}
+  m_GameObject: {fileID: 772813673}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -728,7 +728,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6792453, g: 0.47532123, b: 0.18262726, a: 1}
+  m_Color: {r: 0.5660378, g: 0.4161487, b: 0.32840872, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -738,17 +738,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &769154942
+--- !u!4 &772813676
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769154940}
+  m_GameObject: {fileID: 772813673}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0017416546, y: 1.1965216, z: 0}
-  m_LocalScale: {x: 1.0039535, y: 1.4782608, z: 1}
+  m_LocalPosition: {x: 0, y: 1.1686958, z: 10}
+  m_LocalScale: {x: 1, y: 1.3749999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1980648095}
@@ -1161,6 +1161,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfThrows: 5
   ballPrefab: {fileID: 4419007252315814049, guid: 0f3438807d6f86440a89a062f5800621, type: 3}
+  ballSprites:
+  - {fileID: 21300000, guid: 5399c9149ac053e4b8565dad059832b9, type: 3}
+  - {fileID: 21300000, guid: 4d0a0f9caaff0b24dbc040247b9757fa, type: 3}
+  - {fileID: 21300000, guid: 1dfdb43d839543140b7378200059f6dc, type: 3}
   spawnPosition: {x: -6.73, y: -1.49, z: 0}
   spriteToRotate: {fileID: 1930956019}
   spriteToFall: {fileID: 523838214}
@@ -1604,7 +1608,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.09678713, g: 0.57971364, b: 0.7075472, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1739,11 +1743,11 @@ Transform:
   m_GameObject: {fileID: 1980648093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.065501, y: -4.27, z: 0}
+  m_LocalPosition: {x: 0.065501, y: -4.3, z: 0}
   m_LocalScale: {x: 49.091248, y: 1.4375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 769154942}
+  - {fileID: 772813676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1980648097
