@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace dunkADog
 {
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
+
+        [Header("UI objects")]
+        [SerializeField] private GameObject gameUI;
+        [SerializeField] private GameObject outOfThrowsText;
+        [SerializeField] private TMPro.TextMeshProUGUI throwCountText;
+        [SerializeField] private TMPro.TextMeshProUGUI scoreText;
+        [SerializeField] private Slider levelSlider;
 
         private int score = 0;
         private int level = 1;
@@ -38,11 +46,15 @@ namespace dunkADog
         // Update is called once per frame
         void Update()
         {
-
+            throwCountText.text = $"{(int)amountOfThrows:D1}";
         }
 
         public void StartGame()
         {
+            outOfThrowsText.SetActive(false);
+            gameUI.SetActive(true);
+            scoreText.text = "0";
+
             playing = true;
             level = 1;
             score = 0;
@@ -83,6 +95,8 @@ namespace dunkADog
             AddScore();
             Debug.Log("Current Score: " + score);
 
+            UpdateSlider();
+
             if (level == 6)
             {
 
@@ -111,10 +125,15 @@ namespace dunkADog
         void AddScore()
         {
             score = score + 20;
+            scoreText.text = $"{score}";
+
         }
 
         void GameOver()
         {
+            
+            outOfThrowsText.SetActive(true);
+
             Debug.Log("Game Over! Out of Throws");
             StopTargetMovement();
             ResetTargetPosition();
@@ -144,6 +163,16 @@ namespace dunkADog
             if (target != null)
             {
                 target.ResetPosition();
+            }
+        }
+        private void UpdateSlider()
+        {
+            if (levelSlider != null)
+            {
+
+                float maxLevel = 6;
+                float sliderValue = Mathf.Clamp01(level / maxLevel); 
+                levelSlider.value = sliderValue;
             }
         }
     }
