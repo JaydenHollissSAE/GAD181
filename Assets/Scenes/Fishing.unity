@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   hook: {fileID: 5151282934990126707}
+  line: {fileID: 2027511033}
   GM: {fileID: 1455829500}
 --- !u!1 &1455829500
 GameObject:
@@ -618,7 +619,7 @@ LineRenderer:
   m_SortingOrder: 63
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 10, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
