@@ -12,10 +12,16 @@ namespace Fishing
         private bool moveBuffer;
         private SpriteRenderer spriteRenderer;
         [SerializeField] List<Sprite> fishTypes = new List<Sprite>();
+        [SerializeField] GameObject hook;
+        [SerializeField] GameManager gameManager;
+        [SerializeField] GameObject GM;
         private float fishSize;
         // Start is called before the first frame update
         void Start()
         {
+            GM = GameObject.FindGameObjectWithTag("GameManager");
+            gameManager = GM.GetComponent<GameManager>();
+            hook = gameManager.hookHold;
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             fishSize = Random.Range(0.4f, 3f);
             moveSpeed = Random.Range(0.5f, 30f);
@@ -35,6 +41,7 @@ namespace Fishing
             //moveTo.y = moveTo.y + Random.Range(-0.003f, 0.003f);
             transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * moveSpeed);
             //Debug.Log(moveTo);
+            HookCheck();
         }
 
         private void SetMovementPos()
@@ -73,6 +80,17 @@ namespace Fishing
             yield return new WaitForSeconds(waitTime);
             //Debug.Log("I waited for you, just like you asked of me");
             StartCoroutine(MoveFish());
+        }
+        private void HookCheck()
+        {
+            if (gameManager.hookActive)
+            {
+                if (Vector2.Distance(transform.position, hook.transform.position) < 0.7f)
+                {
+                    Debug.Log("Close");
+                }
+                //Debug.Log("Active");
+            }
         }
     }
 }

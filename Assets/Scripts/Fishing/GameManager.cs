@@ -7,6 +7,7 @@ namespace Fishing
     public class GameManager : MonoBehaviour
     {
         public bool hookActive = false;
+        public GameObject hookHold;
         // Start is called before the first frame update
         void Start()
         {
