@@ -10,11 +10,14 @@ namespace Fishing
         private Vector2 mousePos;
         [SerializeField] Camera cam;
         [SerializeField] GameObject hook;
+        [SerializeField] GameObject GM;
+        private GameManager gameManager;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            hook.SetActive(false);
+            gameManager = GM.GetComponent<GameManager>();
         }
 
         // Update is called once per frame
@@ -27,7 +30,17 @@ namespace Fishing
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GameObject h = Instantiate(hook, hit.point, Quaternion.identity);
+                    if (!gameManager.hookActive)
+                    {
+                        hook.transform.position = hit.point;
+                        gameManager.hookActive = true;
+                        hook.SetActive(true);
+                    }
+                    else
+                    {
+                        hook.SetActive(false);
+                        gameManager.hookActive = false;
+                    }
                 }
 
                 Vector2 moveTo = new Vector2(hit.point.x, gameObject.transform.position.y);
