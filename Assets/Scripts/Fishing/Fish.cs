@@ -15,7 +15,10 @@ namespace Fishing
         [SerializeField] GameObject hook;
         [SerializeField] GameManager gameManager;
         [SerializeField] GameObject GM;
+        [SerializeField] private GameObject right;
+        [SerializeField] private GameObject left;
         private float fishSize;
+        private GameObject fishingRod;
         // Start is called before the first frame update
         void Start()
         {
@@ -24,6 +27,11 @@ namespace Fishing
             gameManager = GM.GetComponent<GameManager>();
             //Debug.Log(gameManager);
             hook = gameManager.hookHold;
+            fishingRod = gameManager.fishingRodHold;
+            right = hook.transform.GetChild(0).gameObject;
+            left = hook.transform.GetChild(1).gameObject;
+            right.SetActive(false);
+            left.SetActive(false);
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             fishSize = Random.Range(0.4f, 3f);
             moveSpeed = Random.Range(0.5f, 30f);
@@ -43,7 +51,15 @@ namespace Fishing
             //moveTo.y = moveTo.y + Random.Range(-0.003f, 0.003f);
             transform.position = Vector2.MoveTowards(transform.position, moveTo, Time.deltaTime * moveSpeed);
             //Debug.Log(moveTo);
-            HookCheck();
+            if (!gameManager.catching)
+            {
+                HookCheck();
+            }
+            else
+            {
+                Catching();
+            }
+            //Debug.Log(Random.Range(0, 2));
         }
 
         private void SetMovementPos()
@@ -85,13 +101,44 @@ namespace Fishing
         }
         private void HookCheck()
         {
-            if (gameManager.hookActive)
+            if (gameManager.hookActive && !gameManager.catching)
             {
                 if (Vector2.Distance(transform.position, hook.transform.position) < 0.7f)
                 {
                     Debug.Log("Close");
+                    if (Random.Range(0,2)  == 1)
+                    {
+                        right.SetActive(true);
+                        gameManager.catching = true;
+                        gameManager.isLeft = false;
+                    }
+                    else
+                    {
+                        left.SetActive(true);
+                        gameManager.catching = true;
+                        gameManager.isLeft = true;
+                    }
                 }
                 //Debug.Log("Active");
+            }
+        }
+        private void Catching()
+        {
+            if (!gameManager.isLeft)
+            {
+                if (fishingRod.transform.position.x - hook.transform.position.x >= 1.2f)
+                {
+                    Debug.Log("Met For Right");
+                }
+                
+            }
+            else
+            {
+                if (hook.transform.position.x - fishingRod.transform.position.x >= 1.2f)
+                {
+                    
+                }
+
             }
         }
     }

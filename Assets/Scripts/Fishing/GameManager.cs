@@ -8,6 +8,10 @@ namespace Fishing
     {
         public bool hookActive = false;
         public GameObject hookHold;
+        public bool catching = false;
+        public bool isLeft = false;
+        public GameObject fishingRodHold;
+
         // Start is called before the first frame update
         void Start()
         {

@@ -13,11 +13,17 @@ namespace Fishing
         [SerializeField] GameObject line;
         [SerializeField] GameObject GM;
         private GameManager gameManager;
+        private GameObject right;
+        private GameObject left;
 
         // Start is called before the first frame update
         void Start()
         {
             line.SetActive(false);
+            right = hook.transform.GetChild(0).gameObject;
+            left = hook.transform.GetChild(1).gameObject;
+            right.SetActive(false);
+            left.SetActive(false);
             hook.SetActive(false);
 
             gameManager = GM.GetComponent<GameManager>();
@@ -42,9 +48,12 @@ namespace Fishing
                     }
                     else
                     {
+                        left.SetActive(false);
+                        right.SetActive(false);
                         hook.SetActive(false);
                         line.SetActive(false);
                         gameManager.hookActive = false;
+                        gameManager.catching = false;
                     }
                 }
 
