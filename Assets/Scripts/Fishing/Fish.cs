@@ -20,7 +20,9 @@ namespace Fishing
         void Start()
         {
             GM = GameObject.FindGameObjectWithTag("GameManager");
+            //Debug.Log(GM);
             gameManager = GM.GetComponent<GameManager>();
+            //Debug.Log(gameManager);
             hook = gameManager.hookHold;
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             fishSize = Random.Range(0.4f, 3f);
