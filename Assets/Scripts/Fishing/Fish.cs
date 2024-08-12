@@ -19,6 +19,8 @@ namespace Fishing
         [SerializeField] private GameObject left;
         private float fishSize;
         private GameObject fishingRod;
+        public int value;
+        private bool catchingThis = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -103,6 +105,7 @@ namespace Fishing
         {
             if (gameManager.hookActive && !gameManager.catching)
             {
+                catchingThis = false;
                 if (Vector2.Distance(transform.position, hook.transform.position) < 0.7f)
                 {
                     Debug.Log("Close");
@@ -111,12 +114,14 @@ namespace Fishing
                         right.SetActive(true);
                         gameManager.catching = true;
                         gameManager.isLeft = false;
+                        catchingThis = true;
                     }
                     else
                     {
                         left.SetActive(true);
                         gameManager.catching = true;
                         gameManager.isLeft = true;
+                        catchingThis = true;
                     }
                 }
                 //Debug.Log("Active");
@@ -124,22 +129,34 @@ namespace Fishing
         }
         private void Catching()
         {
-            if (!gameManager.isLeft)
+            if (catchingThis)
             {
-                if (fishingRod.transform.position.x - hook.transform.position.x >= 1.2f)
+                if (!gameManager.isLeft)
                 {
-                    Debug.Log("Met For Right");
-                }
-                
-            }
-            else
-            {
-                if (hook.transform.position.x - fishingRod.transform.position.x >= 1.2f)
-                {
-                    
-                }
+                    if (fishingRod.transform.position.x - hook.transform.position.x >= 1.2f)
+                    {
+                        Caught();
+                    }
 
+                }
+                else
+                {
+                    if (hook.transform.position.x - fishingRod.transform.position.x >= 1.2f)
+                    {
+                        Caught();
+                    }
+
+                }
             }
+        }
+        private void Caught()
+        {
+            value = Mathf.RoundToInt((fishSize * 2 + moveSpeed * 3 + waitTime) / 10);
+            GameManager.inst.pointCallback.Invoke(value);
+            right.SetActive(false);
+            left.SetActive(false);
+            Destroy(gameObject);
+
         }
     }
 }

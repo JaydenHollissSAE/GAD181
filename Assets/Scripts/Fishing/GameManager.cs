@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Fishing
 {
+    [System.Serializable]
+    public class PointCallback : UnityEvent<int>
+    {
+
+    }
     public class GameManager : MonoBehaviour
     {
         public bool hookActive = false;
@@ -12,16 +18,20 @@ namespace Fishing
         public bool isLeft = false;
         public GameObject fishingRodHold;
 
-        // Start is called before the first frame update
-        void Start()
+        public static GameManager inst;
+        public PointCallback pointCallback;
+        public UnityEvent timeUp;
+
+        void Awake()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            if (inst == null)
+            {
+                inst = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
     }
 }
