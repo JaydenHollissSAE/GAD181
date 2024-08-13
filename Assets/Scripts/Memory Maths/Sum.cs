@@ -39,12 +39,13 @@ namespace Milo.MemoryMath
 
         public void ConfirmSelection()
         {
+            setup.FlipCards();
             if (AddUpCards() == sumGoal)
             {
-                Debug.Log("You Win!");
+                setup.winState = 2;
             } else
             {
-                Debug.Log("You Lose...");
+                setup.winState = 1;
             }
         }
     }

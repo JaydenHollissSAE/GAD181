@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 namespace Milo.MemoryMath
 {
@@ -17,6 +18,7 @@ namespace Milo.MemoryMath
         public List<int> cardsSelected = new();
 
         public bool cardsFlipped = false;
+        public int winState = 0; // 0: null, 1: lose, 2: win
 
         public Sprite backOfCard;
 
@@ -33,6 +35,25 @@ namespace Milo.MemoryMath
         private void Update()
         {
             CheckSelected();
+            if(winState == 0)
+            {
+                if (!cardsFlipped)
+                {
+                    sumText.text = "Memorise the cards";
+                } else {
+                    int awayFromSum = sumScript.sumGoal - sumScript.AddUpCards();
+                    sumText.text = awayFromSum.ToString();
+                }
+            }
+            if (winState == 1)
+            {
+                sumText.text = "You lost. Better luck next time!";
+            }
+            if(winState == 2)
+            {
+                sumText.text = "You won! Congratulations!";
+            }
+            
         }
 
         public void ArrangeCards()
@@ -83,7 +104,6 @@ namespace Milo.MemoryMath
             yield return new WaitForSeconds(delayTime);
             // Debug.Log("flipping cards");
             FlipCards();
-            sumText.text = sumScript.sumGoal.ToString();
         }
     }
 }
