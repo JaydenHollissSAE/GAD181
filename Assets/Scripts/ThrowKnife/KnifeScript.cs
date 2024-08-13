@@ -11,6 +11,8 @@ public class KnifeScript : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D knifeCollider;
+    public KnifeSpawn spawnScript;
+    public WoodHealth damage;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class KnifeScript : MonoBehaviour
         {
             rb.AddForce( force , ForceMode2D.Impulse);
             rb.gravityScale = 1;
-        }
+        }        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,6 +44,15 @@ public class KnifeScript : MonoBehaviour
 
             knifeCollider.offset = new Vector2(knifeCollider.offset.x, -0.4f);
             knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
+
+            damage.Damage();
+            //for (int i = 1;i < damage.health; i++)
+            spawnScript.SpawnKnife();
+        }
+        else if (collision.collider.tag =="knife")
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -2);
         }
     }
 }
+
