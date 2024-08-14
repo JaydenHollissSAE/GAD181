@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Fishing.unity
+    guid: f0b87f5f993f6e34eb412a5eb12544fb
+  - enabled: 1
+    path: Assets/Scenes/Balloons.unity
+    guid: 8bae3531cc118494d85063ba5fbba2fb
+  - enabled: 1
+    path: Assets/Scenes/WhackAMouseScene.unity
+    guid: d78a81a99ce40314e9cca17bf6b4838d
+  - enabled: 1
+    path: Assets/Scenes/MineFieldScene.unity
+    guid: fa1f9cb4948ab8344af9a1a501a0dab7
+  - enabled: 1
+    path: Assets/Scenes/DunkADog.unity
+    guid: 92ecfe374831dc54c932b5b7ad9f114e
   m_configObjects: {}
