@@ -32,6 +32,7 @@ public class KnifeScript : MonoBehaviour
         {
             rb.AddForce( force , ForceMode2D.Impulse);
             rb.gravityScale = 1;
+            Debug.Log("PRESS");
         }        
     }
 
@@ -49,7 +50,7 @@ public class KnifeScript : MonoBehaviour
             this.transform.SetParent(collision.collider.transform);
 
             knifeCollider.offset = new Vector2(knifeCollider.offset.x, -0.4f);
-            knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
+            knifeCollider.size = new Vector2(knifeCollider.size.x, 0.95f);
 
             damage.Damage();
             //for (int i = 1;i < damage.health; i++) for testing

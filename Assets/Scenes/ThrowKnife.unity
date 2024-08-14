@@ -848,6 +848,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4030155204000184063, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030155204000184063, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5144079254977276388, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
       propertyPath: damage
       value: 
@@ -864,6 +872,10 @@ PrefabInstance:
       propertyPath: spawnScript
       value: 
       objectReference: {fileID: 1860492632}
+    - target: {fileID: 9039512505689726079, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9039512505689726079, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
