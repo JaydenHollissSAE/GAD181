@@ -804,6 +804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: knife
       objectReference: {fileID: 0}
+    - target: {fileID: 1179800288338973480, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3228376788460409400, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -844,6 +848,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5144079254977276388, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
+      propertyPath: damage
+      value: 
+      objectReference: {fileID: 1419753715}
     - target: {fileID: 5144079254977276388, guid: 71a628e02d56d4c4c95e9295a110274a, type: 3}
       propertyPath: health
       value: 

@@ -10,5 +10,6 @@ public class KnifeSpawn : MonoBehaviour
     public void SpawnKnife()
     {
         Instantiate(knifeObject, transform.position, Quaternion.identity);
+        Debug.Log("spawn");
     }
 }

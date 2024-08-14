@@ -11,6 +11,8 @@ public class KnifeScript : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D knifeCollider;
+    private GameObject spawnScriptObject;
+    private GameObject woodObject;
     public KnifeSpawn spawnScript;
     public WoodHealth damage;
 
@@ -18,6 +20,10 @@ public class KnifeScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         knifeCollider = GetComponent<BoxCollider2D>();
+        woodObject = GameObject.FindGameObjectWithTag("wood");
+        spawnScriptObject = GameObject.FindGameObjectWithTag("spawn");
+        spawnScript =spawnScriptObject.GetComponent<KnifeSpawn>();
+        damage = woodObject.GetComponent<WoodHealth>();
     }
 
     private void Update()
@@ -46,12 +52,8 @@ public class KnifeScript : MonoBehaviour
             knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
 
             damage.Damage();
-            //for (int i = 1;i < damage.health; i++)
+            //for (int i = 1;i < damage.health; i++) for testing
             spawnScript.SpawnKnife();
-        }
-        else if (collision.collider.tag =="knife")
-        {
-            rb.velocity = new Vector2(rb.velocity.x, -2);
         }
     }
 }
