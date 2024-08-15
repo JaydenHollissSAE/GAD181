@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - wood
+  - knife
+  - spawn
   - Darts Manager
   - Ball
   - Target

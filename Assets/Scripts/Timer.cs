@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     [SerializeField] List<Sprite> timerSprites = new List<Sprite>();
     private int currentSpriteId;
     public float gameTime;
-    private float timePassed;
+    public float timePassed;
     [SerializeField] GameObject timerSprite;
     [SerializeField] TextMeshProUGUI timerText;
     private float timeCalc;
