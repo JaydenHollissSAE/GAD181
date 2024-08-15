@@ -7,11 +7,16 @@ TagManager:
   - wood
   - knife
   - spawn
+  - Darts Manager
+  - Ball
+  - Target
+  - Hook
+  - GameManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NonInteractable
   - Water
   - UI
   - IsMine
@@ -43,4 +48,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: LineRenderer
+    uniqueID: 3624554685
     locked: 0
