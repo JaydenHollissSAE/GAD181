@@ -1,3 +1,4 @@
+using BalloonDarts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -40,6 +41,10 @@ public class Timer : MonoBehaviour
         if (timePassed < gameTime)
         {
             StartCoroutine(RunTimer());
+        }
+        else
+        {
+            GameManager.inst.timeUp.Invoke();
         }
     }
 
