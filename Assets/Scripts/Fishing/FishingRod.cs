@@ -15,10 +15,12 @@ namespace Fishing
         private GameManager gameManager;
         private GameObject right;
         private GameObject left;
+        private AudioSource castRodSound;
 
         // Start is called before the first frame update
         void Start()
         {
+            castRodSound = GetComponent<AudioSource>();
             line.SetActive(false);
             right = hook.transform.GetChild(0).gameObject;
             left = hook.transform.GetChild(1).gameObject;
@@ -41,6 +43,7 @@ namespace Fishing
                 {
                     if (!gameManager.hookActive)
                     {
+                        castRodSound.Play();
                         hook.transform.position = hit.point;
                         gameManager.hookActive = true;
                         line.SetActive(true);

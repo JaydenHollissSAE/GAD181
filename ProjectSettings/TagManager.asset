@@ -15,6 +15,7 @@ TagManager:
   - timer
   - Text
   - DataStorage
+  - AwardTickets
   layers:
   - Default
   - TransparentFX

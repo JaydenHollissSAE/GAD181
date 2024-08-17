@@ -20,5 +20,6 @@ public class DataStorage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        volume = 1f;
     }
 }

@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 822106743}
   - component: {fileID: 822106742}
   - component: {fileID: 822106744}
+  - component: {fileID: 822106745}
   m_Layer: 0
   m_Name: FishingRod
   m_TagString: Untagged
@@ -832,6 +833,102 @@ MonoBehaviour:
   hook: {fileID: 5151282934990126707}
   line: {fileID: 2027511033}
   GM: {fileID: 1455829500}
+--- !u!82 &822106745
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822106741}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 55de08ed4bc880348bfb0ebbe3f9a513, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 235
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1068156056
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,11 +1061,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4614aa413b6fc440879710e05aaec4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerObject: {fileID: 1548547606}
   hookActive: 0
   hookHold: {fileID: 5151282934990126707}
   catching: 0
   isLeft: 0
   fishingRodHold: {fileID: 822106741}
+  endGame: {fileID: 7675099817739138570, guid: b79bc3704774ad0448ef81f2a4a2bab7, type: 3}
   pointCallback:
     m_PersistentCalls:
       m_Calls: []
@@ -1088,6 +1187,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1548547606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8332337849409507906, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+  m_PrefabInstance: {fileID: 465999941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1798455322
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,11 +14,15 @@ namespace ButtonMash
         [SerializeField] private GameObject timerObject;
         public TMP_Text displayText;
         [SerializeField] private GameObject textObject;
+        [SerializeField] private GameObject endGame;
+        private bool gameEnded = false;
+        private int ticketsAwarded = 0;
         void Start()
         {
             timer = timerObject.GetComponent<Timer>();
             displayText = textObject.GetComponent<TMP_Text>();
             mash = mashDelay;
+            GetComponent<AudioSource>().Play();
         }
 
         // Update is called once per frame
@@ -41,10 +45,19 @@ namespace ButtonMash
                 if (mash >= 15f)
                 {
                     displayText.text = "YOU WON!";
+                    ticketsAwarded = 10;
                 }
                 else
                 {
                     displayText.text = "YOU LOST!";
+                    
+                }
+                if (!gameEnded)
+                {
+                    Instantiate(endGame);
+                    gameEnded = true;
+                    GameObject.FindGameObjectWithTag("AwardTickets").GetComponent<TextMeshProUGUI>().text = ticketsAwarded.ToString() + " Tickets Awarded";
+                    GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>().tickets += ticketsAwarded;
                 }
             }
 
