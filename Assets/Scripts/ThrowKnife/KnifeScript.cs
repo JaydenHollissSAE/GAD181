@@ -1,5 +1,7 @@
+using Milo.MemoryMath;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class KnifeScript : MonoBehaviour
@@ -17,6 +19,9 @@ public class KnifeScript : MonoBehaviour
     public WoodHealth damage;
     private Timer timer;
     [SerializeField] private GameObject timerObject;
+    public TMP_Text displayText;
+    public GameObject textObject;
+
 
     private void Awake()
     {
@@ -28,6 +33,9 @@ public class KnifeScript : MonoBehaviour
         damage = woodObject.GetComponent<WoodHealth>();
         timerObject =GameObject.FindGameObjectWithTag("timer");
         timer = timerObject.GetComponent<Timer>();
+        textObject = GameObject.FindGameObjectWithTag("Text");
+        displayText = textObject.GetComponent<TMP_Text>();
+
     }
 
     private void Update()
@@ -62,7 +70,8 @@ public class KnifeScript : MonoBehaviour
         }
         else if (collision.collider.tag == "knife" || timer.timePassed >= 10f )
         {
-            Debug.Log("GAME OVER!");
+            Debug.Log("GAME OVER!"); // testing
+            displayText.text = "YOU LOST!";
             rb.velocity = new Vector2(rb.velocity.x, -2);
         }
     }
