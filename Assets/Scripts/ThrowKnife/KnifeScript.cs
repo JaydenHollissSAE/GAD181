@@ -26,6 +26,7 @@ public class KnifeScript : MonoBehaviour
         spawnScriptObject = GameObject.FindGameObjectWithTag("spawn");
         spawnScript = spawnScriptObject.GetComponent<KnifeSpawn>();
         damage = woodObject.GetComponent<WoodHealth>();
+        timerObject =GameObject.FindGameObjectWithTag("timer");
         timer = timerObject.GetComponent<Timer>();
     }
 
