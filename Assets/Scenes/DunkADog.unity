@@ -2327,6 +2327,7 @@ MonoBehaviour:
   spriteToFall: {fileID: 523838214}
   rigidBody2d: {fileID: 0}
   splash: {fileID: 0}
+  endGame: {fileID: 7675099817739138570, guid: b79bc3704774ad0448ef81f2a4a2bab7, type: 3}
 --- !u!82 &1774797361
 AudioSource:
   m_ObjectHideFlags: 0
