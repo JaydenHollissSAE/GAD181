@@ -23,6 +23,8 @@ namespace KnifeThrow
         [SerializeField] private GameObject timerObject;
         public TMP_Text displayText;
         public GameObject textObject;
+        private AudioSource knifeThrowSound;
+        private AudioSource knifeHitSound;
 
 
         private void Awake()
@@ -37,13 +39,15 @@ namespace KnifeThrow
             timer = timerObject.GetComponent<Timer>();
             textObject = GameObject.FindGameObjectWithTag("Text");
             displayText = textObject.GetComponent<TMP_Text>();
-
+            knifeThrowSound = GetComponents<AudioSource>()[0];
+            knifeHitSound = GetComponents<AudioSource>()[1];
         }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && isActive)
             {
+                knifeThrowSound.Play();
                 rb.AddForce(force, ForceMode2D.Impulse);
                 rb.gravityScale = 1;
                 Debug.Log("PRESS"); //Testing
@@ -59,6 +63,7 @@ namespace KnifeThrow
 
             if (collision.collider.tag == "wood")
             {
+                knifeHitSound.Play();
                 rb.velocity = new Vector2(0, 0);
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 this.transform.SetParent(collision.collider.transform);
@@ -69,12 +74,19 @@ namespace KnifeThrow
                 damage.Damage();
                 //for (int i = 1;i < damage.health; i++) for testing
                 spawnScript.SpawnKnife();
+                damage.ticketsGained += 3;
             }
             else if (collision.collider.tag == "knife" || timer.timePassed >= 10f)
             {
                 Debug.Log("GAME OVER!"); // testing
                 displayText.text = "YOU LOST!";
                 rb.velocity = new Vector2(rb.velocity.x, -2);
+                damage.ticketsGained -= 5;
+                if (damage.ticketsGained < 0) 
+                {
+                    damage.ticketsGained = 0;
+                }
+                damage.EndGame();
             }
         }
     }

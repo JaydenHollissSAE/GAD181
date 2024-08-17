@@ -63,7 +63,7 @@ namespace Milo.MemoryMath
 
             Instantiate(endGameObject);
             GameObject.FindGameObjectWithTag("AwardTickets").GetComponent<TextMeshProUGUI>().text = ticketsGained.ToString() + " Tickets Awarded";
-            GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>().tickets += ticketsGained; ;
+            GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>().tickets += ticketsGained;
         }
     }
 }
