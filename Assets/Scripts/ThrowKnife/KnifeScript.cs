@@ -44,7 +44,7 @@ public class KnifeScript : MonoBehaviour
         {
             rb.AddForce(force, ForceMode2D.Impulse);
             rb.gravityScale = 1;
-            Debug.Log("PRESS");
+            Debug.Log("PRESS"); //Testing
         }
     }
 
