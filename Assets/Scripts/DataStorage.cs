@@ -5,8 +5,8 @@ using UnityEngine;
 public class DataStorage : MonoBehaviour
 {
     public static DataStorage instance;
-    public int tickets;
-    public float volume;
+    public int tickets = 0;
+    public float volume = 1f;
 
     // Start is called before the first frame update
     void Awake()
