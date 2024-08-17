@@ -23,11 +23,13 @@ namespace Milo.MemoryMath
 
         private void Start()
         {
+
             ArrangeCards();
             DoDelayAction(5f);
             for(int i  = 0; i < cards.Length; i++) {
                 cardRenderers[i] = cards[i].GetComponent<SpriteRenderer>();
                 cardSprites[i] = cardRenderers[i].sprite;
+                GetComponent<AudioSource>().Play();
             }
         }
 

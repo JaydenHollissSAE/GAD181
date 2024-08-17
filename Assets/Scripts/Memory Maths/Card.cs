@@ -16,11 +16,12 @@ namespace Milo.MemoryMath
 
         public GameObject selectedBoard;
         public GameObject normalBoard;
+        [SerializeField] private AudioSource cardFlip;
 
         private void Start()
         {
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
+            cardFlip = transform.parent.gameObject.GetComponent<AudioSource>();
         }
 
         private void OnMouseDown()
@@ -31,11 +32,13 @@ namespace Milo.MemoryMath
                 cardSelected = true;
                 setup.cardsSelected.Add(cardID);
                 gameObject.transform.SetParent(selectedBoard.transform, false);
+                cardFlip.Play();
             } else
             {
                 cardSelected = false;
                 setup.cardsSelected.Remove(cardID);
                 gameObject.transform.SetParent(normalBoard.transform, false);
+                cardFlip.Play();
 
             }
             //for (int i =0;i < setup.cardsSelected.Count;i++)
