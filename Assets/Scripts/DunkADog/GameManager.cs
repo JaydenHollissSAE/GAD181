@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,9 @@ namespace dunkADog
         public GameObject spriteToRotate;
         public GameObject spriteToFall;
         public Rigidbody2D rigidBody2d;
+        [SerializeField] private AudioSource splash;
+
+        [SerializeField] private GameObject endGame;
         
 
 
@@ -38,6 +42,8 @@ namespace dunkADog
         {
             target = GameObject.FindObjectOfType<Target>();
             amountOfThrows = 5;
+
+            splash = GetComponent<AudioSource>();
 
             
             StartGame(); // REMOVE LATER
@@ -133,6 +139,8 @@ namespace dunkADog
         {
             
             outOfThrowsText.SetActive(true);
+            Instantiate(endGame);
+            GameObject.FindGameObjectWithTag("AwardTickets").GetComponent<TextMeshProUGUI>().text = "0 Tickets Awarded";
 
             Debug.Log("Game Over! Out of Throws");
             StopTargetMovement();
@@ -143,7 +151,12 @@ namespace dunkADog
         {
             if (spriteToRotate != null)
             {
-                spriteToRotate.transform.Rotate(new Vector3(0, 0, 90));    
+                spriteToRotate.transform.Rotate(new Vector3(0, 0, 90));
+                splash.Play();
+                Instantiate(endGame);
+                int ticketsGained = amountOfThrows * 6;
+                GameObject.FindGameObjectWithTag("AwardTickets").GetComponent<TextMeshProUGUI>().text = ticketsGained.ToString() + " Tickets Awarded";
+                GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>().tickets += ticketsGained;
             }
             
             StopTargetMovement();

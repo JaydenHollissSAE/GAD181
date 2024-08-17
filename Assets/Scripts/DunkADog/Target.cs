@@ -17,11 +17,13 @@ namespace dunkADog
         private GameManager gameManager;
         private bool hasBeenHit = false; // Flag to track if the target has been hit
         private bool isMoving = true; // Flag to control movement
+        private AudioSource targetHit;
 
         void Start()
         {
             gameManager = GameObject.FindObjectOfType<GameManager>();
             startPosition = transform.position; // Store the initial position of the target
+            targetHit = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -40,6 +42,7 @@ namespace dunkADog
             {
                 hasBeenHit = true; // Set flag to true to prevent multiple hits
                 Ball ball = collision.gameObject.GetComponent<Ball>();
+                targetHit.Play();
                 if (ball != null)
                 {
                     ball.HitTarget(); // Inform the ball that it hit the target
