@@ -16,6 +16,7 @@ namespace BalloonDarts
         public static GameManager inst;
         public PointCallback pointCallback;
         public UnityEvent timeUp;
+        public UnityEvent playSound;
 
         void Awake()
         {
