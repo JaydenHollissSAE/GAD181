@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MENU.unity
+    guid: 747ce1728cf4efc449fd68159896e315
+  - enabled: 1
     path: Assets/Scenes/Fishing.unity
     guid: f0b87f5f993f6e34eb412a5eb12544fb
   - enabled: 1
@@ -20,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DunkADog.unity
     guid: 92ecfe374831dc54c932b5b7ad9f114e
+  - enabled: 1
+    path: Assets/Scenes/ButtonEscape.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MemoryMathsScene.unity
+    guid: f92668e336e4a564494193a6b5a2c285
+  - enabled: 1
+    path: Assets/Scenes/ThrowKnife.unity
+    guid: ab63bc2ac61f98148be71e7bc588cffa
   m_configObjects: {}
