@@ -530,7 +530,6 @@ GameObject:
   - component: {fileID: 6032952611767210524}
   - component: {fileID: 5377346850794791616}
   - component: {fileID: 8269497304000245005}
-  - component: {fileID: 1158664922890784236}
   m_Layer: 0
   m_Name: EndGameScreen
   m_TagString: Untagged
@@ -627,16 +626,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1158664922890784236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7675099817739138570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14dea0c617f77164aacd32b7c21424db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Balloons

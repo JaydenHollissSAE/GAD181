@@ -9,7 +9,7 @@ namespace BalloonDarts
     {
         [SerializeField] TextMeshProUGUI pointsTxt;
         [SerializeField] GameObject pointsTracker;
-        private int totalPoints;
+        public int totalPoints;
         // Start is called before the first frame update
         void Start()
         {

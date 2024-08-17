@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsTxt: {fileID: 797743635}
   pointsTracker: {fileID: 650412458}
+  totalPoints: 0
 --- !u!114 &448792956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddb1e7acf862d243a2865e9c853c2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGame: {fileID: 7675099817739138570, guid: b79bc3704774ad0448ef81f2a4a2bab7, type: 3}
+  endGameObject: {fileID: 7675099817739138570, guid: b79bc3704774ad0448ef81f2a4a2bab7, type: 3}
 --- !u!82 &448792959
 AudioSource:
   m_ObjectHideFlags: 0
