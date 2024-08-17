@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ namespace whackAMouse
         [SerializeField] private GameObject cactusFailText;
         [SerializeField] private TMPro.TextMeshProUGUI timeText;
         [SerializeField] private TMPro.TextMeshProUGUI scoreText;
+        private int ticketsGained;
+        [SerializeField] private GameObject endGameObject;
+        private bool GameComplete = false;
 
 
         //initial amount of time
@@ -77,11 +81,26 @@ namespace whackAMouse
             if (type == 0)
             {
                 outOfTimeText.SetActive(true);
+                ticketsGained = Mathf.RoundToInt(int.Parse(scoreText.text))/2;
             }
             else
             {
                 cactusFailText.SetActive(true);
+                ticketsGained -= 20;
+                if (ticketsGained < 0)
+                {
+                    ticketsGained = 0;
+                }
             }
+            if (!GameComplete)
+            {
+                GameComplete = true;
+                Instantiate(endGameObject);
+                GameObject.FindGameObjectWithTag("AwardTickets").GetComponent<TextMeshProUGUI>().text = ticketsGained + " Tickets Awarded";
+                GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>().tickets += ticketsGained;
+            }
+
+
             // Hide all moles.
             foreach (Rat rat in rats)
             {
@@ -89,7 +108,7 @@ namespace whackAMouse
             }
             // Stop the game and show the start UI.
             playing = false;
-            playButton.SetActive(true);
+            playButton.SetActive(false);
         }
 
         void Update()

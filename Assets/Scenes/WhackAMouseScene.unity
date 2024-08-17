@@ -1633,6 +1633,7 @@ MonoBehaviour:
   cactusFailText: {fileID: 1023109790}
   timeText: {fileID: 1177238957}
   scoreText: {fileID: 1987883876}
+  endGameObject: {fileID: 7675099817739138570, guid: b79bc3704774ad0448ef81f2a4a2bab7, type: 3}
 --- !u!4 &1335276281
 Transform:
   m_ObjectHideFlags: 0
