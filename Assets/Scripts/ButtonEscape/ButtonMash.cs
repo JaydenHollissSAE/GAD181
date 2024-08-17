@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ButtonMash : MonoBehaviour
@@ -9,10 +10,12 @@ public class ButtonMash : MonoBehaviour
     bool pressed;
     private Timer timer;
     [SerializeField] private GameObject timerObject;
-    // Start is called before the first frame update
+    public TMP_Text displayText;
+    [SerializeField] private GameObject textObject;
     void Start()
     {
         timer= timerObject.GetComponent<Timer>();
+        displayText = textObject.GetComponent<TMP_Text>();
         mash = mashDelay;
     }
 
@@ -25,7 +28,7 @@ public class ButtonMash : MonoBehaviour
         {
             pressed = true;
             mash += mashDelay;
-            Debug.Log("PRESSED");
+            Debug.Log("PRESSED"); //Testing!
         }
         else if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -35,11 +38,11 @@ public class ButtonMash : MonoBehaviour
         { 
             if(mash>=15f)
             {
-                Debug.Log("Winner");
+                displayText.text = "YOU WON!";
             }
             else
             {
-                Debug.Log("GAME LOST");
+                displayText.text = "YOU LOST!";
             }
         }
         
