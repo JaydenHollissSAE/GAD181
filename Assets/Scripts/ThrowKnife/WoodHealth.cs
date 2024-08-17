@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class WoodHealth : MonoBehaviour
-{
-    public int health = 10;
-    public TMP_Text displayText;
+namespace KnifeThrow { 
 
-    public void Damage()
+    public class WoodHealth : MonoBehaviour
     {
-        health--;
-        if (health == 0)
+        public int health = 10;
+        public TMP_Text displayText;
+
+        public void Damage()
         {
-            Debug.Log("GAME Winner"); // testing
-            displayText.text = "YOU WON!";
-        } 
+            health--;
+            if (health == 0)
+            {
+                Debug.Log("GAME Winner"); // testing
+                displayText.text = "YOU WON!";
+            } 
+        }
     }
 }

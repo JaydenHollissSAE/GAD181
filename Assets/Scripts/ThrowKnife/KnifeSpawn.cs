@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeSpawn : MonoBehaviour
+namespace KnifeThrow
 {
-    [SerializeField]
-    public GameObject knifeObject;
 
-    public void SpawnKnife()
+    public class KnifeSpawn : MonoBehaviour
     {
-        Instantiate(knifeObject, transform.position, Quaternion.identity);
-        Debug.Log("spawn"); // testing
+        [SerializeField]
+        public GameObject knifeObject;
+
+        public void SpawnKnife()
+        {
+            Instantiate(knifeObject, transform.position, Quaternion.identity);
+            Debug.Log("spawn"); // testing
+        }
     }
 }
