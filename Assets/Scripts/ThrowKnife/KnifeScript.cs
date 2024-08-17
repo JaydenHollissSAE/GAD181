@@ -15,6 +15,8 @@ public class KnifeScript : MonoBehaviour
     private GameObject woodObject;
     public KnifeSpawn spawnScript;
     public WoodHealth damage;
+    private Timer timer;
+    [SerializeField] private GameObject timerObject;
 
     private void Awake()
     {
@@ -22,18 +24,19 @@ public class KnifeScript : MonoBehaviour
         knifeCollider = GetComponent<BoxCollider2D>();
         woodObject = GameObject.FindGameObjectWithTag("wood");
         spawnScriptObject = GameObject.FindGameObjectWithTag("spawn");
-        spawnScript =spawnScriptObject.GetComponent<KnifeSpawn>();
+        spawnScript = spawnScriptObject.GetComponent<KnifeSpawn>();
         damage = woodObject.GetComponent<WoodHealth>();
+        timer = timerObject.GetComponent<Timer>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isActive ) 
+        if (Input.GetMouseButtonDown(0) && isActive)
         {
-            rb.AddForce( force , ForceMode2D.Impulse);
+            rb.AddForce(force, ForceMode2D.Impulse);
             rb.gravityScale = 1;
             Debug.Log("PRESS");
-        }        
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -43,7 +46,7 @@ public class KnifeScript : MonoBehaviour
 
         isActive = false;
 
-        if (collision.collider.tag =="wood")
+        if (collision.collider.tag == "wood")
         {
             rb.velocity = new Vector2(0, 0);
             rb.bodyType = RigidbodyType2D.Kinematic;
@@ -56,6 +59,12 @@ public class KnifeScript : MonoBehaviour
             //for (int i = 1;i < damage.health; i++) for testing
             spawnScript.SpawnKnife();
         }
+        else if (collision.collider.tag == "knife" || timer.timePassed >= 10f || damage.health == 0)
+        {
+            Debug.Log("GAME OVER!");
+            rb.velocity = new Vector2(rb.velocity.x, -2);
+        }
     }
 }
+
 
