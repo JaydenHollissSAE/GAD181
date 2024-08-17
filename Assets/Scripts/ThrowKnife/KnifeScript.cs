@@ -60,7 +60,7 @@ public class KnifeScript : MonoBehaviour
             //for (int i = 1;i < damage.health; i++) for testing
             spawnScript.SpawnKnife();
         }
-        else if (collision.collider.tag == "knife" || timer.timePassed >= 10f || damage.health == 0)
+        else if (collision.collider.tag == "knife" || timer.timePassed >= 10f )
         {
             Debug.Log("GAME OVER!");
             rb.velocity = new Vector2(rb.velocity.x, -2);

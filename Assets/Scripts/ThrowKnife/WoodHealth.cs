@@ -9,9 +9,9 @@ public class WoodHealth : MonoBehaviour
     public void Damage()
     {
         health--;
-       /* if (health == 0)
+        if (health == 0)
         {
             Debug.Log("GAME Winner");
-        } FOR TESTING */
+        } 
     }
 }
