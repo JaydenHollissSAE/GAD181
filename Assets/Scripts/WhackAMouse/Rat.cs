@@ -157,10 +157,11 @@ namespace whackAMouse
                         }
                         break;
                     case RatType.Cactus:
-                        // Game over, 1 for cactus.
-                        gameManager.GameOver(1);
                         audioSource.clip = cactusSound;
                         audioSource.Play();
+                        // Game over, 1 for cactus.
+                        gameManager.GameOver(1);
+                        
                         break;
                     default:
                         break;
