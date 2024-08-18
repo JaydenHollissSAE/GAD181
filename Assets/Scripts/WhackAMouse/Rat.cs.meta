@@ -11,6 +11,8 @@ MonoImporter:
   - RedRatCrossEyes: {fileID: 21300000, guid: 4112afd366a8b554aae8e2e84eb8fcce, type: 3}
   - Cactus: {fileID: 21300000, guid: fa1cbcb2d58bcdb4592c69db1efd8558, type: 3}
   - gameManager: {instanceID: 0}
+  - ratSound: {fileID: 8300000, guid: 08f7876f3cd4a4649915557cf0ca1aea, type: 3}
+  - cactusSound: {fileID: 8300000, guid: c18bca92a8f54214880ae9694f6b3df2, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

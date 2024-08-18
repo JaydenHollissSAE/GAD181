@@ -43,6 +43,11 @@ namespace whackAMouse
         private int lives;
         private int ratIndex = 0;
 
+        [Header("Audio")]
+        [SerializeField] private AudioClip ratSound;
+        [SerializeField] private AudioClip cactusSound;
+        private AudioSource audioSource;
+
         private IEnumerator ShowHide(Vector2 start, Vector2 end)
         {
             // Make rat is at the start.
@@ -122,6 +127,7 @@ namespace whackAMouse
                     case RatType.Normal:
                         spriteRenderer.sprite = ratCrossEyes;
                         gameManager.AddScore(ratIndex);
+                        audioSource.PlayOneShot(ratSound);
                         // Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
@@ -139,6 +145,7 @@ namespace whackAMouse
                         {
                             spriteRenderer.sprite = RedRatCrossEyes;
                             gameManager.AddScore(ratIndex);
+                            audioSource.PlayOneShot(ratSound);
                             // Stop the animation
                             StopAllCoroutines();
                             StartCoroutine(QuickHide());
@@ -149,6 +156,7 @@ namespace whackAMouse
                     case RatType.Cactus:
                         // Game over, 1 for cactus.
                         gameManager.GameOver(1);
+                        audioSource.PlayOneShot(cactusSound);
                         break;
                     default:
                         break;
@@ -207,11 +215,13 @@ namespace whackAMouse
             // Get references to the components needed.
             spriteRenderer = GetComponent<SpriteRenderer>();
             boxCollider2D = GetComponent<BoxCollider2D>();
+            audioSource = GetComponent<AudioSource>();
             // Work out collider values.
             boxOffset = boxCollider2D.offset;
             boxSize = boxCollider2D.size;
             boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f);
             boxSizeHidden = new Vector2(boxSize.x, 0f);
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void Activate(int level)
@@ -234,5 +244,6 @@ namespace whackAMouse
             StopAllCoroutines();
         }
     }
+
 
 }
