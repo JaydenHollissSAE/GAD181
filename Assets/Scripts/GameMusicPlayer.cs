@@ -11,7 +11,7 @@ public class GameMusicPlayer : MonoBehaviour
     {
         dataStorage = GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>();
         music = GetComponent<AudioSource>();
-        music.volume = dataStorage.volume;
+        music.volume = (dataStorage.volume/3);
     }
 
     // Update is called once per frame
