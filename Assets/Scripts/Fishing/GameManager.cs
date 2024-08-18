@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -44,7 +45,11 @@ namespace Fishing
                 if (timer.timePassed >= timer.gameTime)
                 {
                     gameEnded = true;
+
+                    int ticketsGained = (GetComponent<PointTracker>().totalPoints) / 3;
                     Instantiate(endGame);
+                    GameObject.FindGameObjectWithTag("AwardTickets").GetComponent<TextMeshProUGUI>().text = ticketsGained + " Tickets Awarded";
+                    GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>().tickets += ticketsGained;
                 }
             }
         }

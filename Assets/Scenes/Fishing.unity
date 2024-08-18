@@ -1074,6 +1074,7 @@ MonoBehaviour:
   timeUp:
     m_PersistentCalls:
       m_Calls: []
+  pointTracker: {fileID: 1068156056}
 --- !u!4 &1455829502
 Transform:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsTxt: {fileID: 227818968}
   pointsTracker: {fileID: 1068156056}
+  totalPoints: 0
 --- !u!1 &1526510688
 GameObject:
   m_ObjectHideFlags: 0
