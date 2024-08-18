@@ -127,7 +127,8 @@ namespace whackAMouse
                     case RatType.Normal:
                         spriteRenderer.sprite = ratCrossEyes;
                         gameManager.AddScore(ratIndex);
-                        audioSource.PlayOneShot(ratSound);
+                        audioSource.clip = ratSound;
+                        audioSource.Play();
                         // Stop the animation
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
@@ -145,7 +146,9 @@ namespace whackAMouse
                         {
                             spriteRenderer.sprite = RedRatCrossEyes;
                             gameManager.AddScore(ratIndex);
-                            audioSource.PlayOneShot(ratSound);
+
+                            audioSource.clip = ratSound;
+                            audioSource.Play();
                             // Stop the animation
                             StopAllCoroutines();
                             StartCoroutine(QuickHide());
@@ -156,7 +159,8 @@ namespace whackAMouse
                     case RatType.Cactus:
                         // Game over, 1 for cactus.
                         gameManager.GameOver(1);
-                        audioSource.PlayOneShot(cactusSound);
+                        audioSource.clip = cactusSound;
+                        audioSource.Play();
                         break;
                     default:
                         break;
