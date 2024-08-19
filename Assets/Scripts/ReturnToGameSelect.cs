@@ -25,8 +25,8 @@ public class ReturnToGameSelect : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         timePassed += 1;
-        returnTimer.text = "Returning to Game Select in " + (10-timePassed).ToString() + " seconds.";
-        if (timePassed < 10)
+        returnTimer.text = "Returning to Game Select in " + (5-timePassed).ToString() + " seconds.";
+        if (timePassed < 5)
         {
             StartCoroutine(Countdown());
         }
