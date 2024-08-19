@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameSelect : MonoBehaviour
 {
 
-    
+    public void LoadBalloonDarts()
+    {
+        SceneManager.LoadScene(2);
+    }
 
     public void LoadFishing()
     {

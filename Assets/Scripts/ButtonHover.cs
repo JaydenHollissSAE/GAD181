@@ -26,8 +26,5 @@ public class ButtonHover : MonoBehaviour
         spriteRenderer.sprite = normalSprite;
     }
 
-    public void LoadBalloonDarts()
-    {
-        SceneManager.LoadScene(2);
-    }
+
 }
