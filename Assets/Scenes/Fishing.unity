@@ -1074,7 +1074,6 @@ MonoBehaviour:
   timeUp:
     m_PersistentCalls:
       m_Calls: []
-  pointTracker: {fileID: 1068156056}
 --- !u!4 &1455829502
 Transform:
   m_ObjectHideFlags: 0
@@ -1183,8 +1182,8 @@ Transform:
   m_GameObject: {fileID: 1526510688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.27, z: 0}
-  m_LocalScale: {x: 15.7, y: 10.7, z: 13.184484}
+  m_LocalPosition: {x: 0.0265, y: 0.2258, z: 0}
+  m_LocalScale: {x: 18.7713, y: 10.858766, z: 13.184484}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
