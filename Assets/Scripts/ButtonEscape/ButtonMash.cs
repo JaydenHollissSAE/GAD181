@@ -29,9 +29,10 @@ namespace ButtonMash
         void Update()
         {
             //Debug.Log(mash);
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(3.61f, 0.13f), Time.deltaTime * 2);
+            //transform.position = Vector2.MoveTowards(transform.position, new Vector2(3.61f, 0.13f), Time.deltaTime * 2);
             if (Input.GetKeyUp(KeyCode.Space) && !pressed)
             {
+                transform.position = new Vector2 (transform.position.x+0.2f, transform.position.y);
                 pressed = true;
                 mash += mashDelay;
                 Debug.Log("PRESSED"); //Testing!

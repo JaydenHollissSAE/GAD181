@@ -14,7 +14,7 @@ namespace ButtonMash
         // Update is called once per frame
         void Update()
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-2.71f, 0.04f), Time.deltaTime * 2);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(-2.71f, 0.04f), Time.deltaTime * 1.6f);
         }
     }
 }
