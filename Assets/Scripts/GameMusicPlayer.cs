@@ -7,7 +7,7 @@ public class GameMusicPlayer : MonoBehaviour
     private DataStorage dataStorage;
     private AudioSource music;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         dataStorage = GameObject.FindGameObjectWithTag("DataStorage").GetComponent<DataStorage>();
         music = GetComponent<AudioSource>();

@@ -16,6 +16,7 @@ TagManager:
   - Text
   - DataStorage
   - AwardTickets
+  - TutorialText
   layers:
   - Default
   - TransparentFX

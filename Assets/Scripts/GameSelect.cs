@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public void LoadBalloonDarts()
     {

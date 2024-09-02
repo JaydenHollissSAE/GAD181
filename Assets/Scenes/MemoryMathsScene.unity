@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Confirm
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68ca4ad04d4769649bc987bb33b70b18, type: 2}
+  m_sharedMaterial: {fileID: -8978702421974161564, guid: 68ca4ad04d4769649bc987bb33b70b18, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -316,8 +316,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Memorise the cards
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68ca4ad04d4769649bc987bb33b70b18, type: 2}
+  m_sharedMaterial: {fileID: -8978702421974161564, guid: 68ca4ad04d4769649bc987bb33b70b18, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -490,20 +490,40 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3069075607728010664, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 62.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069075607728010664, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069075607728010664, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069075607728010664, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 321.00006
+      value: 1162
       objectReference: {fileID: 0}
     - target: {fileID: 3069075607728010664, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 148.99998
+      value: 571
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062222449866470793, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 124.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062222449866470793, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 124.85
       objectReference: {fileID: 0}
     - target: {fileID: 4062222449866470793, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 321
+      value: 1162.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4062222449866470793, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 155
+      value: 578.5
       objectReference: {fileID: 0}
     - target: {fileID: 5081197717155864796, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_Pivot.x
@@ -585,6 +605,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6373443228035153931, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373443228035153931, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373443228035153931, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373443228035153931, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1440
+      objectReference: {fileID: 0}
     - target: {fileID: 7246962531502323284, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_Camera
       value: 
@@ -596,6 +632,30 @@ PrefabInstance:
     - target: {fileID: 7246962531502323284, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602360258660087309, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602360258660087309, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 68ca4ad04d4769649bc987bb33b70b18, type: 2}
+    - target: {fileID: 7602360258660087309, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602360258660087309, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8978702421974161564, guid: 68ca4ad04d4769649bc987bb33b70b18, type: 2}
+    - target: {fileID: 7602360258660087309, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602360258660087309, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8332337849409507906, guid: b008ea29a0dd4004aa457a9a4c3bba49, type: 3}
       propertyPath: m_Name
@@ -646,7 +706,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.10980393, g: 0.2392157, b: 0.13333334, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -770,12 +830,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
