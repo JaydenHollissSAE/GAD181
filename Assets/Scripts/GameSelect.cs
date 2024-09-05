@@ -42,5 +42,9 @@ public class GameSelect : MonoBehaviour
     {
         SceneManager.LoadScene(9);
     }
+    public void LoadShop()
+    {
+        SceneManager.LoadScene(10);
+    }
 
 }
