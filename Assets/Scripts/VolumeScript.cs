@@ -14,7 +14,8 @@ public class VolumeScript : MonoBehaviour
     {
         slider = GetComponent<Slider>();
         dataStorage = dataStorageObject.GetComponent<DataStorage>();
-        dataStorage.volume = slider.value;
+        //dataStorage.volume = slider.value;
+        slider.value = dataStorage.volume;
     }
 
     public void SetVolume()
