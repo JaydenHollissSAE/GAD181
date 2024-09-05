@@ -18,6 +18,7 @@ public class ResetGame : MonoBehaviour
         if (Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.T)) 
         {
             Destroy(dataStorage);
+            PlayerPrefs.DeleteAll();
             SceneManager.LoadScene(0);
         }
     }
