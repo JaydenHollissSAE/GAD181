@@ -9,6 +9,7 @@ public class DataStorage : MonoBehaviour
     public float volume = 1f;
     private int ticketsOld = 0;
     private float volumeOld = 1f;
+    public string inventory = "";
 
     // Start is called before the first frame update
     void Awake()
@@ -25,7 +26,7 @@ public class DataStorage : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Volume"))
         {
-            volume = PlayerPrefs.GetFloat("Volume", 1f);
+            volume = PlayerPrefs.GetFloat("Volume");
         }
         else
         {
@@ -34,7 +35,12 @@ public class DataStorage : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Tickets"))
         {
-            tickets = PlayerPrefs.GetInt("Tickets", 1);
+            tickets = PlayerPrefs.GetInt("Tickets");
+        }
+
+        if (PlayerPrefs.HasKey("Inventory"))
+        {
+            inventory = PlayerPrefs.GetString("Inventory");
         }
     }
     private void Update()

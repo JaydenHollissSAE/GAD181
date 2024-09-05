@@ -16,8 +16,17 @@ public class QuitMicroGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            SceneManager.LoadScene(1);
+            if (SceneManager.GetActiveScene().name != "MENU")
+            {
+                if (SceneManager.GetActiveScene().name == "GameSelect")
+                {
+                    SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    SceneManager.LoadScene(1);
+                }
+            }
         }
-
     }
 }
