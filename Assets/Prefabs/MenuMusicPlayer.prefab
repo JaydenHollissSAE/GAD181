@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 977142086340434841}
   - component: {fileID: 3207176647541796541}
   - component: {fileID: 1105647912048272182}
+  - component: {fileID: -3230919811759808989}
   m_Layer: 0
   m_Name: MenuMusicPlayer
   m_TagString: Untagged
@@ -139,5 +140,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d2ef73c5724fdc46aa9badd3005467b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3230919811759808989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580339158537421613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b1a2072c47c7640a2ef3ce3e2f1aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
